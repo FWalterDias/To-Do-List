@@ -15,10 +15,9 @@ export default createGlobalStyle`
 
     body{
         font-size: 1.6rem;
-        max-width: 144rem;
         min-height: 100vh;
         font-family: "Roboto", sans-serif;
-
+    
         margin: 0 auto;
     }
 

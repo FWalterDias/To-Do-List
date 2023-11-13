@@ -15,4 +15,23 @@ export const ContainerSigIn = styled.div`
         width: min(32.5rem, 100%);
         max-width: 65rem;
     }
+
+    @media (min-width: 1200px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+
+        position: relative;
+
+        .logo{
+            position: absolute;
+            margin: 0;
+            top: 4.3rem;
+            left: 10rem;
+        }
+
+        .img-signin{
+            width: max(32.5rem, 100%);
+        }
+    }
 `

@@ -6,6 +6,7 @@ export const ContainerFormSignIn = styled.form`
     align-items: center;
 
     width: 100%;
+    max-width: 50rem;
 
     padding: 0 1.2rem;
     margin-bottom: 2rem;
