@@ -1,11 +1,11 @@
-import { Button } from "../../../components/Button";
-import { ContainerFormSignIn, InputWrapper, ButtonsWrapper } from "./styles";
+import { Button } from "../../Button/index.tsx";
+import { ContainerFormSignIn, InputWrapper, ButtonsWrapper } from "./styles.ts";
 import { useState } from "react";
 
 export function FormSignIn() {
 
-    const [userName, setUserName] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
+    const [userName, setUserName] = useState < string > ("");
+    const [password, setPassword] = useState < string > ("");
 
     return (
         <ContainerFormSignIn>

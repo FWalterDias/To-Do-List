@@ -1,9 +1,15 @@
+import { Logo } from "../../components/Logo";
+import imgSignUp from "../../assets/img-signup.png";
+import { ContainerSignUp } from "./styles.ts";
+import { Form } from "../../components/Form";
 
+export function SingUp() {
+    return (
+        <ContainerSignUp>
+            <Logo />
+            <img src={imgSignUp} alt="img-sigin" className="img-signin" />
 
-export function Singup(){
-    return(
-        <h1>
-            Pagina de Signup
-        </h1>
+            <Form type="signup" />
+        </ContainerSignUp>
     )
 }

@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router-dom";
-import { Singin } from "./pages/Signin";
-import { Singup } from "./pages/Signup";
+import { SingIn } from "./pages/SignIn";
+import { SingUp } from "./pages/SignUp";
 
 export function MainRoutes() {
 
   return (
     <Routes>
-      <Route path="/" element={<Singin />} />
-      <Route path="/signin" element={<Singin />} />
+      <Route path="/" element={<SingIn />} />
+      <Route path="/signin" element={<SingIn />} />
 
-      <Route path="/signup" element={<Singup />} />
+      <Route path="/signup" element={<SingUp />} />
 
       <Route path="*" element={"Pagina nao encontrada"} />
     </Routes>
