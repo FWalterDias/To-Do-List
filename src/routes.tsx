@@ -1,6 +1,6 @@
 import { Route, Routes, Navigate, Outlet } from "react-router-dom";
-import { SignIn } from "./pages/SignIn/index.tsx";
-import { SignUp } from "./pages/SignUp/index.tsx";
+import { SignIn } from "./pages/Signin";
+import { SignUp } from "./pages/Signup";
 import { Home } from "./pages/Home";
 import { useAuth } from "./hooks/useAuth";
 
