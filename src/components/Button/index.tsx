@@ -1,14 +1,14 @@
-import { UserContext } from "../../Contexts/UserContext";
-import { ContainerButton } from "./styles";
-import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import api from "../../api/api";
-import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 import { ErrorsContext } from "../../Contexts/ErrorsContext";
 import { ModalContext } from "../../Contexts/ModalContext";
 import { TasksContext } from "../../Contexts/TasksContext";
+import { UserContext } from "../../Contexts/UserContext";
+import api from "../../api/api";
+import { useAuth } from "../../hooks/useAuth";
 import { useTaskStorage } from "../../hooks/useTaskStorage";
 import { ButtonProps, TaskListProps } from "../../types/types";
+import { ContainerButton } from "./styles";
 
 
 export function Button({ type, text, btnWidth, action }: ButtonProps) {

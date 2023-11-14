@@ -1,4 +1,11 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const fadeInFormSigup = keyframes`
+    from{
+        transform: translatey(50%);
+        opacity: .5;
+    }
+`
 
 export const ContainerFormSignUp = styled.form`
     display: flex;
@@ -14,6 +21,8 @@ export const ContainerFormSignUp = styled.form`
     background-color: ${({ theme }) => theme.COLORS.WHITE};
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.50);
     border-radius: 1rem; 
+
+    animation: ${fadeInFormSigup} 1s ease-in-out;
 
     
     fieldset{

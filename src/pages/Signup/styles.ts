@@ -1,4 +1,11 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const fadeInImgSignup = keyframes`
+    from{
+        transform: translateX(-50%);
+        opacity: .5;
+    }
+`
 
 export const ContainerSignUp = styled.div`
     display: flex;
@@ -12,11 +19,13 @@ export const ContainerSignUp = styled.div`
 
     padding: 2rem 1rem;
 
-    .img-signin{
+    .img-signup{
         width: min(32.5rem, 100%);
         max-width: 65rem;
 
         margin: 2rem 0;
+
+        animation: ${fadeInImgSignup} 1s ease-in-out;
     }
 
     @media (min-width: 1200px) {
@@ -33,7 +42,7 @@ export const ContainerSignUp = styled.div`
             left: 10rem;
         }
 
-        .img-signin{
+        .img-signup{
             width: max(32.5rem, 100%);
         }
     }

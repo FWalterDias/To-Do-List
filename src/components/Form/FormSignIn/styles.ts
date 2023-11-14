@@ -1,4 +1,11 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const fadeInFormLogin = keyframes`
+    from{
+        transform: translatey(50%);
+        opacity: .5;
+    }
+`
 
 export const ContainerFormSignIn = styled.form`
     display: flex;
@@ -15,6 +22,7 @@ export const ContainerFormSignIn = styled.form`
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.50);
     border-radius: 1rem; 
 
+    animation: ${fadeInFormLogin} 1s ease-in-out;
     
     fieldset{
         display: flex;

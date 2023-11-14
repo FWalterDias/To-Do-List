@@ -17,16 +17,14 @@ export function FilterOptions() {
 
             filteredTasks = allTaskts.filter((task) => task.status === 0);
 
-            return task.setFilteredTaskList!(filteredTasks);
+            task.setFilteredTaskList!(filteredTasks);
 
         } else if (!filter.pending && filter.done) {
-            console.log("Entrou aqui no done");
             filteredTasks = allTaskts.filter((task) => task.status === 1);
 
-            console.log(filteredTasks);
-            return task.setFilteredTaskList!(filteredTasks);
+            task.setFilteredTaskList!(filteredTasks);
         } else {
-            return task.setFilteredTaskList!([]);
+            task.setFilteredTaskList!([]);
         }
     };
 

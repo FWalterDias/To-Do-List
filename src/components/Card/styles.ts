@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const fadeInConatinerCard = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(-50%);
+        }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`
 
 export const ContainerCard = styled.div`
     display: flex;
@@ -19,6 +30,8 @@ export const ContainerCard = styled.div`
     color: ${({ theme }) => theme.COLORS.DARK_GRAY};
 
     position: relative;
+
+    animation: ${fadeInConatinerCard} .5s ease-in-out;
 
     &.done{
         opacity: .5;
