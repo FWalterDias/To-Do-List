@@ -1,6 +1,6 @@
 import { Route, Routes, Navigate, Outlet } from "react-router-dom";
-import { SingIn } from "./pages/SignIn";
-import { SingUp } from "./pages/SignUp";
+import  SingIn  from "./pages/SignIn";
+import  SingUp  from "./pages/SignUp";
 import { Home } from "./pages/Home";
 import { useAuth } from "./hooks/useAuth";
 
