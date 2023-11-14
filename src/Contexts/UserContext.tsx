@@ -11,7 +11,8 @@ export function UserProvider({ children }: UserProviderProps) {
     const [user, setUser] = useState<string>("");
     const [userName, setUserName] = useState<string>("");
     const [password, setPassWord] = useState<string>("");
-
+    const [confirmPassword, setConfirmPassWord] = useState<string>("");
+    
     const userContextValue: UserProps = {
         user,
         setUser,
@@ -19,6 +20,8 @@ export function UserProvider({ children }: UserProviderProps) {
         setUserName,
         password,
         setPassWord,
+        confirmPassword,
+        setConfirmPassWord
     };
 
     return (

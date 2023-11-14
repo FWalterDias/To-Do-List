@@ -1,13 +1,14 @@
-import { Button } from "../../Button/index.tsx";
-import { ContainerFormSignIn, InputWrapper, ButtonsWrapper } from "./styles.ts";
-import { useContext, useState } from "react";
+import { useContext } from "react";
+import { ErrorsContex } from "../../../Contexts/ErrorsContex.tsx";
 import { UserContext } from "../../../Contexts/UserContext.tsx";
+import { Button } from "../../Button/index.tsx";
 import { ErrorComponent } from "../../ErrorComponent/index.tsx";
+import { ButtonsWrapper, ContainerFormSignIn, InputWrapper } from "./styles.ts";
 
 export function FormSignIn() {
 
     const userValues = useContext(UserContext);
-    const [showError, setShowError] = useState<boolean>(false)
+    const error = useContext(ErrorsContex);
 
     return (
         <ContainerFormSignIn>
@@ -34,22 +35,19 @@ export function FormSignIn() {
                     />
                 </InputWrapper>
             </fieldset>
-            {showError && <ErrorComponent text="Preencha todos os campos" />} 
+            {error.showError && <ErrorComponent text={error.errorMensage} />} 
 
             <ButtonsWrapper>
                 <Button 
                 type="signin" 
                 text="Entrar"
                 btnWidth="biggest"
-                action="signin"
-                setShowError={setShowError}
-                  />
+                action="signin"/>
 
                 <Button 
                 type="signup" 
                 text="Cadastrar-se" 
-                btnWidth="biggest"
-                setShowError={setShowError} />
+                btnWidth="biggest" />
             </ButtonsWrapper>
 
             <strong>Entrar sem cadastro</strong>

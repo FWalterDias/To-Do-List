@@ -5,4 +5,6 @@ export type UserProps = {
     setUserName: (value: string) => void;
     password: string;
     setPassWord: (value: string) => void;
+    confirmPassword: string,
+    setConfirmPassWord: (value: string) => void;
 };

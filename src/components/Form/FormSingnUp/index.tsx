@@ -1,16 +1,15 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ErrorsContex } from "../../../Contexts/ErrorsContex";
+import { UserContext } from "../../../Contexts/UserContext";
 import { Button } from "../../../components/Button";
-import { ContainerFormSignUp, InputWrapper, ButtonsWrapper } from "./styles";
-import { useState } from "react";
 import { ErrorComponent } from "../../ErrorComponent";
+import { ButtonsWrapper, ContainerFormSignUp, InputWrapper } from "./styles";
 
 export function FormSignUp() {
 
-    const [name, setName] = useState < string > ("");
-    const [userName, setUserName] = useState < string > ("");
-    const [password, setPassword] = useState < string > ("");
-    const [confirmPassword, setConfirmPassword] = useState < string > ("");
-    const [showError, setShowError] = useState<boolean>(false);
+    const userValues = useContext(UserContext);
+    const error = useContext(ErrorsContex);
 
     return (
         <ContainerFormSignUp>
@@ -22,8 +21,8 @@ export function FormSignUp() {
                     <input
                         id="name"
                         type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={userValues?.user}
+                        onChange={(e) => userValues?.setUser(e.target.value)}
                     />
                 </InputWrapper>
 
@@ -32,8 +31,8 @@ export function FormSignUp() {
                     <input
                         id="userName"
                         type="text"
-                        value={userName}
-                        onChange={(e) => setUserName(e.target.value)}
+                        value={userValues?.userName}
+                        onChange={(e) => userValues?.setUserName(e.target.value)}
                     />
                 </InputWrapper>
 
@@ -42,8 +41,8 @@ export function FormSignUp() {
                     <input
                         id="password"
                         type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={userValues?.password}
+                        onChange={(e) => userValues?.setPassWord(e.target.value)}
                     />
                 </InputWrapper>
 
@@ -52,20 +51,19 @@ export function FormSignUp() {
                     <input
                         id="confirmPassword"
                         type="password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        value={userValues?.confirmPassword}
+                        onChange={(e) => userValues?.setConfirmPassWord(e.target.value)}
                     />
                 </InputWrapper>
             </fieldset>
-            {showError && <ErrorComponent text="Preencha todos os campos" />}
+            {error.showError && <ErrorComponent text={error.errorMensage} />}
 
             <ButtonsWrapper>
                 <Button 
                 type="signup" 
                 text="Cadastrar" 
                 btnWidth="biggest" 
-                action="signup"
-                setShowError={setShowError} />
+                action="signup" />
             </ButtonsWrapper>
 
             <strong>Já tem cadastro? 
