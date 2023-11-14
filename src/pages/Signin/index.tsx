@@ -1,13 +1,14 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import imgSignIn from "../../assets/img-signin.png";
 import { Form } from "../../components/Form";
 import { Logo } from "../../components/Logo";
-import { useAuth } from "../../hooks/useAuth.tsx";
-import { ContainerSigIn } from "./styles.ts";
+import { useAuth } from "../../hooks/useAuth";
+import { ContainerSigIn } from "./styles";
 
-export function SingIn() {
+interface SignInProps {}
 
+const SignIn: React.FC<SignInProps> = () => {
     const { handleGetToken } = useAuth();
     const navigate = useNavigate();
 
@@ -17,7 +18,7 @@ export function SingIn() {
         if (hasToken) {
             navigate("/home");
         }
-    });
+    }, [handleGetToken, navigate]);
 
     return (
         <ContainerSigIn>
@@ -26,5 +27,7 @@ export function SingIn() {
 
             <Form type="signin" />
         </ContainerSigIn>
-    )
-}
+    );
+};
+
+export default SignIn;
