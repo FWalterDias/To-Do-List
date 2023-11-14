@@ -57,7 +57,7 @@ export function FormSignUp() {
             </fieldset>
 
             <ButtonsWrapper>
-                <Button type="signup" text="Cadastrar" />
+                <Button type="signup" text="Cadastrar" btnWidth="biggest" />
             </ButtonsWrapper>
 
             <strong>Já tem cadastro? 

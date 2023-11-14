@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom"
 type ButtonProps = {
     type: "signin" | "signup" | "task",
     text: string,
+    btnWidth: "biggest" | "small"
 }
 
-export function Button({ type, text }: ButtonProps) {
+export function Button({ type, text, btnWidth }: ButtonProps) {
 
     const navigate = useNavigate();
 
@@ -16,8 +17,10 @@ export function Button({ type, text }: ButtonProps) {
         if(type === "signin") return navigate("/home");
     }
 
+    const buttonClasses = `${type} ${btnWidth}`
+
     return (
-        <ContainerButton className={type} onClick={handleNavigate}>
+        <ContainerButton className={buttonClasses} onClick={handleNavigate}>
             {text}
         </ContainerButton>
     )

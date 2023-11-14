@@ -7,7 +7,7 @@ export const ContainerHeader = styled.header`
     align-items: center;
 
     width: 100%;
-    height: 22.5rem;
+    height: 25rem;
 
     background: ${({theme}) => theme.COLORS.BACKGROUND_LINEAR_GRADIENT};
 `

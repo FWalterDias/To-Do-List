@@ -5,7 +5,6 @@ export const ContainerButton = styled.button`
     align-items: center;
     justify-content: center;
 
-    width: 32rem;
     height: 5rem;
 
     color: ${({ theme }) => theme.COLORS.WHITE};
@@ -16,6 +15,8 @@ export const ContainerButton = styled.button`
 
     border: none;
     border-radius: .5rem; 
+    box-shadow: 0px 2px 11px 0px rgba(0, 0, 0, 0.30);
+
 
     cursor: pointer;
 
@@ -35,5 +36,13 @@ export const ContainerButton = styled.button`
 
     &.task{
         background-color: ${({ theme }) => theme.COLORS.PURPLE};
+    }
+
+    &.biggest{
+        width: 32rem;
+    }
+
+    &.small{
+        width: 16rem;
     }
 `

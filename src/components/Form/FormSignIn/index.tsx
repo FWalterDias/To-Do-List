@@ -34,9 +34,9 @@ export function FormSignIn() {
             </fieldset>
 
             <ButtonsWrapper>
-                <Button type="signin" text="Entrar" />
+                <Button type="signin" text="Entrar" btnWidth="biggest" />
 
-                <Button type="signup" text="Cadastrar-se" />
+                <Button type="signup" text="Cadastrar-se" btnWidth="biggest" />
             </ButtonsWrapper>
 
             <strong>Entrar sem cadastro</strong>
