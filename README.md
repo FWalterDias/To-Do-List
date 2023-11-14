@@ -1,27 +1,77 @@
-# React + TypeScript + Vite
+# To-Do List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto foi desenvolvido como parte de um desafio para demonstrar minhas habilidades no desenvolvimento web e para concorrer a oportunidades de trabalho freelancer.
 
-Currently, two official plugins are available:
+## Visão Geral
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A aplicação consiste em uma lista de tarefas (To-Do List), responsiva, com funcionalidades de cadastro, login, adição, conclusão e remoção de tarefas. Utiliza React, StyledComponents, TypeScript e Axios como principais tecnologias.
 
-## Expanding the ESLint configuration
+## Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Cadastro de Usuários**: O usuário pode se cadastrar na aplicação, fornecendo informações e uma senha válida, seguindo critérios específicos:
+  - Senha: Deve conter no mínimo 6 caracteres, com pelo menos um caractere maiúsculo, um minúsculo, um número e um caractere especial.
 
-- Configure the top-level `parserOptions` property like this:
+- **Login**: Após o cadastro, é possível fazer login na plataforma.
+  - Restrição de Acesso: Usuários logados não podem acessar rotas de cadastro ou login, sendo redirecionados à página principal.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- **Adição de Tarefas**: Os usuários podem adicionar novas tarefas à lista.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Marcação de Tarefas Concluídas**: Capacidade de marcar tarefas como concluídas.
+
+- **Exclusão de Tarefas**: Remoção de tarefas da lista.
+
+- **Filtragem de Tarefas**: Possibilidade de filtrar tarefas por status (pendentes ou concluídas).
+
+## Estrutura do Projeto
+
+O projeto foi desenvolvido utilizando uma estrutura de pastas e componentes para facilitar a manutenção e escalabilidade:
+
+src/
+│
+├── components/
+│   ├── Login/
+│   ├── Registration/
+│   ├── TaskList/
+│   ├── Filter/
+│   └── ...
+│
+├── pages/
+│   ├── Main/
+│   ├── Login/
+│   ├── Registration/
+│   └── ...
+│
+├── api/
+│   └── axiosConfig.js
+│
+├── hooks/
+│   ├── useAuth.js
+│   └── ...
+│
+└── ...
+
+
+## Tecnologias Utilizadas
+
+- **React**: Biblioteca principal para desenvolvimento do front-end.
+- **Context-API**:  Funcionalidade do React para lidar com a propagação de dados entre components.
+- **StyledComponents**: Para estilização de componentes.
+- **TypeScript**: Utilizado para tipagem estática.
+- **Axios**: Utilizado para realizar requisições HTTP à API fornecida.
+
+## Considerações Finais
+
+Para a criação da aplicação utilizei o modelo Mobile-First, pois acredito que esta é a melhor maneira de desenvolver aplicações responsivas e adaptáveis para diferentes tamanhos de tela. 
+Ademais, ressalto que este desafio foi uma excelente oportunidade para aprimorar habilidades em desenvolvimento web e consolidar conhecimentos em tecnologias como React e TypeScript. Agradecimentos à empresa pela oportunidade oferecida.
+
+# Login
+![login](https://github.com/FWalterDias/Portfolio/assets/100762742/9e8e9d83-808f-4bb9-8ac7-acbaca262d05) 
+
+# Cadastro
+![cadastro](https://github.com/FWalterDias/Portfolio/assets/100762742/e77eeac4-0a82-4a55-b83b-ba68d3a8d802)
+
+# Home
+![home](https://github.com/FWalterDias/Portfolio/assets/100762742/4f9d40cd-d074-4547-af95-44e30cc65b68)
+
+# Filtro
+![filtro](https://github.com/FWalterDias/Portfolio/assets/100762742/cc4eddbc-8bf0-4fc8-8d3a-4d7e88af3aa9)
