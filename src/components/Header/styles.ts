@@ -9,7 +9,18 @@ export const ContainerHeader = styled.header`
     width: 100%;
     height: 25rem;
 
+    padding: 2rem 0;
+
     background: ${({theme}) => theme.COLORS.BACKGROUND_LINEAR_GRADIENT};
+
+    @media (min-width: 1200px){
+        flex-direction: row;
+        height: 20rem;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 0 10rem 8rem 10rem;
+    }
 `
 export const ContainerProfile = styled.div`
     display: flex;

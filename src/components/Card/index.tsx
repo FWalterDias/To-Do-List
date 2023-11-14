@@ -17,7 +17,7 @@ export function Card() {
                 </h3>
 
                 <p>
-                    Descrição da tarefadasdasdadadadadadadadadadad
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis iste in necessitatibus ea at? Omnis fuga minus dolor quas facere. Fuga possimus eos neque. Obcaecati facere excepturi repellat magni molestias!
                 </p>
             </ContainerHeaderCard>
 

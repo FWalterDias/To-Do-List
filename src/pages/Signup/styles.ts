@@ -10,7 +10,7 @@ export const ContainerSignUp = styled.div`
 
     background: ${({ theme }) => theme.COLORS.BACKGROUND_LINEAR_GRADIENT};
 
-    padding: 1rem;
+    padding: 2rem 1rem;
 
     .img-signin{
         width: min(32.5rem, 100%);

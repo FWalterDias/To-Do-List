@@ -5,8 +5,6 @@ export const ContainerLogo = styled.div`
     align-items: center;
     gap: 1.7rem;
 
-    margin-top: 2.6rem;
-
     font-size: ${({ theme }) => theme.FONTS.LOGO_AREA};
     color: ${({ theme }) => theme.COLORS.WHITE};
 

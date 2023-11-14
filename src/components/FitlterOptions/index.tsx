@@ -1,4 +1,4 @@
-import { ContainerFilterOptions } from "./styles";
+import { ContainerFilterOptions, ContainerFilterOptionsOptions  } from "./styles";
 
 export function FilterOptions() {
     return (
@@ -7,7 +7,7 @@ export function FilterOptions() {
                 Categoria
             </span>
 
-            <div>
+            <ContainerFilterOptionsOptions>
                 <button>
                     Pendente
                 </button>
@@ -15,7 +15,7 @@ export function FilterOptions() {
                 <button>
                     Concluídas
                 </button>
-            </div>
+            </ContainerFilterOptionsOptions>
         </ContainerFilterOptions>
     )
 }

@@ -6,7 +6,7 @@ export const ContainerCard = styled.div`
     justify-content: space-between;
 
     width: 100%;
-    height: 15rem;
+    height: 13rem;
 
     padding: 1.5rem 2.7rem;
 
@@ -37,7 +37,7 @@ export const ContainerHeaderCard = styled.div`
     width: 80%;
 
     h3{
-        font-size: 2.4rem;
+        font-size: 2rem;
         font-weight: 600; 
         cursor: pointer;
     }
@@ -48,6 +48,10 @@ export const ContainerHeaderCard = styled.div`
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    @media (min-width: 1200px){
+        width: 50%;
     }
 `
 

@@ -3,28 +3,36 @@ import { Card } from "../Card";
 import { FilterButoton } from "../FilterButton";
 import { FilterOptions } from "../FitlterOptions";
 import Modal from "../Modal";
-import { Containermain, ContainerActions } from "./styles";
+import { Containermain, ContainerActions, ContainerActionsButtons, ContainerTasks } from "./styles";
 import { useState } from "react";
 
 export function Main() {
 
-    const [filterOpen, setFilterOpen] = useState<boolean>(false);
+    const [filterOpen, setFilterOpen] = useState<boolean>(true);
 
     return (
         <Containermain>
             <ContainerActions>
-                <FilterButoton />
-                <Button type="task" text="Adicionar Tarefa" btnWidth="small" />
+                <ContainerActionsButtons>
+                    <FilterButoton />
+                    <Button type="task" text="Adicionar Tarefa" btnWidth="small" />
+                </ContainerActionsButtons>
+                {
+                    filterOpen &&
+                    <FilterOptions />
+                }
             </ContainerActions>
 
-            {
-                filterOpen &&
-                <FilterOptions />
-            }
+            <ContainerTasks>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+            </ContainerTasks>
 
-            {/* <Card /> */}
 
-            <Modal />
+            {/* <Modal /> */}
         </Containermain>
     )
 }

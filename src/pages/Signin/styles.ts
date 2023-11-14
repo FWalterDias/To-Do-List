@@ -9,7 +9,7 @@ export const ContainerSigIn = styled.div`
     min-height: 100vh;
     background: ${({ theme }) => theme.COLORS.BACKGROUND_LINEAR_GRADIENT};
 
-    padding: 1rem;
+    padding: 2rem 1rem;
 
     .img-signin{
         width: min(32.5rem, 100%);

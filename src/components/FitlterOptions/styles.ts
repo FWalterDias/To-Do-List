@@ -6,6 +6,7 @@ export const ContainerFilterOptions = styled.div`
     gap: 1.2rem;
 
     width: 100%;
+    max-width: 30rem;
 
     padding: 3.2rem 0 2.7rem 2rem;
 
@@ -26,6 +27,9 @@ export const ContainerFilterOptions = styled.div`
         gap: 2.4rem;
     }
 
+`
+
+export const ContainerFilterOptionsOptions = styled.div`
     button{
         display: flex;
         align-items: center;
