@@ -15,6 +15,8 @@ export type TasksProps = {
     setGuidIdUser: (value: string) => void
     tasksList: TaskListProps[],
     setTasksList: (value: TaskListProps[]) => void
+    filteredTaskList?: TaskListProps[],
+    setFilteredTaskList?: (value: TaskListProps[]) => void
 }
 
 export type TaskListProps = {
@@ -24,6 +26,8 @@ export type TaskListProps = {
     date: string,
     status: number,
     guidIdUser: string,
+    filteredTaskList?: TaskListProps[],
+    setFilteredTaskList?: (value: TaskListProps[]) => void
 }
 
 type TasksProviderProps = {
@@ -45,6 +49,8 @@ export const TasksContext = createContext<TasksProps>({
     setGuidIdUser: () => { },
     tasksList: [], 
     setTasksList: () => { },
+    filteredTaskList: [],
+    setFilteredTaskList: () => { }
 });
 
 export function TasksProvider({ children }: TasksProviderProps) {
@@ -55,6 +61,7 @@ export function TasksProvider({ children }: TasksProviderProps) {
     const [status, setStatus] = useState<number>(0);
     const [guidIdUser, setGuidIdUser] = useState<string>("");
     const [tasksList, setTasksList] = useState<TaskListProps[]>([]);
+    const [filteredTaskList, setFilteredTaskList] = useState<TaskListProps[]>([]);
 
     const tasksContextValue: TasksProps = {
         id,
@@ -70,7 +77,9 @@ export function TasksProvider({ children }: TasksProviderProps) {
         guidIdUser,
         setGuidIdUser,
         tasksList,
-        setTasksList
+        setTasksList,
+        filteredTaskList,
+        setFilteredTaskList
     };
 
     return (

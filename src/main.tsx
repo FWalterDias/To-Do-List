@@ -9,6 +9,7 @@ import { UserProvider } from './Contexts/UserContext.tsx';
 import { ErrorProvider } from "./Contexts/ErrorsContext.tsx";
 import { ModalProvider } from "./Contexts/ModalContext";
 import { TasksProvider } from "./Contexts/TasksContext.tsx";
+import { FilterProvider } from './Contexts/FilterContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -16,12 +17,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <ErrorProvider>
         <ModalProvider>
           <TasksProvider >
-            <BrowserRouter>
-              <ThemeProvider theme={theme}>
-                <GlobalStyle />
-                <MainRoutes />
-              </ThemeProvider>
-            </BrowserRouter>
+            <FilterProvider>
+              <BrowserRouter>
+                <ThemeProvider theme={theme}>
+                  <GlobalStyle />
+                  <MainRoutes />
+                </ThemeProvider>
+              </BrowserRouter>
+            </FilterProvider>
           </TasksProvider>
         </ModalProvider>
       </ErrorProvider>

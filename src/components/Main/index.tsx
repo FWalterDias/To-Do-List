@@ -30,14 +30,14 @@ export function Main() {
                 });
 
                 tasks.setTasksList(response.data)
-                
+
             } catch (error) {
                 console.log(error);
             }
         }
 
         handleGetTasksUser();
-    }, [])
+    }, []);
 
     return (
         <Containermain>
@@ -62,7 +62,18 @@ export function Main() {
 
             <ContainerTasks>
                 {
-                    tasks.tasksList.length > 0 ?
+                    tasks.filteredTaskList!.length > 0 ? (
+                        tasks.filteredTaskList!.map((task) => (
+                            <Card
+                                key={task.id}
+                                id={task.id}
+                                title={task.title}
+                                date={task.date}
+                                description={task.description}
+                                status={task.status}
+                            />
+                        ))
+                    ) : tasks.tasksList.length > 0 ? (
                         tasks.tasksList.map((task) => (
                             <Card
                                 key={task.id}
@@ -72,7 +83,10 @@ export function Main() {
                                 description={task.description}
                                 status={task.status}
                             />
-                        )) : "Nenhuma tarefa na lista"
+                        ))
+                    ) : (
+                        "Nenhuma tarefa na lista"
+                    )
                 }
             </ContainerTasks>
 
