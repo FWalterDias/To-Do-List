@@ -19,7 +19,25 @@ export const ContainerCard = styled.div`
     color: ${({ theme }) => theme.COLORS.DARK_GRAY};
 
     position: relative;
+
+    &.done{
+        opacity: .5;
+    }
 `
+export const ContainerCardDone = styled.div`
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+
+    width: 80%;
+    height: 1px;
+
+    display: flex;
+    align-self: center;
+    
+    background-color: ${({theme}) => theme.COLORS.DARK_GRAY};
+`
+
 export const CotainerCardActions = styled.div`
     display: flex;
     gap: 1.3rem;
@@ -30,6 +48,8 @@ export const CotainerCardActions = styled.div`
 
     img{
         cursor: pointer;
+        width: 2.2rem;
+        height: 2.2rem;
     }
 `
 
@@ -76,5 +96,9 @@ export const ContainerCardStatus = styled.div`
     strong{
         font-weight: 700; 
         font-size: 1.4rem;
+    }
+
+    &.pendente{
+        background-color: ${({ theme }) => theme.COLORS.ORANGE};
     }
 `
