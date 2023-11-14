@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { TasksContext } from "../../Contexts/TasksContext";
-import { useTaskStorage } from "../../hooks/useTaskStorage";
+import api from "../../api/api";
+import { useAuth } from "../../hooks/useAuth";
 import { Button } from "../Button";
 import { Card } from "../Card";
 import { FilterButoton } from "../FilterButton";
@@ -12,16 +13,30 @@ export function Main() {
 
     const [filterOpen, setFilterOpen] = useState<boolean>(false);
 
-    const { handleGetTasks } = useTaskStorage();
+    const { handleGetToken } = useAuth();
 
     const tasks = useContext(TasksContext);
 
-    useEffect(()=> {
+    useEffect(() => {
+        async function handleGetTasksUser() {
+            try {
 
-        const tasksSaved = handleGetTasks();
+                const token = handleGetToken();
 
-        tasks.setTasksList(tasksSaved)
+                const response = await api.get("/api/ToDo", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
 
+                tasks.setTasksList(response.data)
+                
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        handleGetTasksUser();
     }, [])
 
     return (
