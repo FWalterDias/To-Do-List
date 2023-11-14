@@ -66,6 +66,7 @@ export function Main() {
                         tasks.tasksList.map((task) => (
                             <Card
                                 key={task.id}
+                                id={task.id}
                                 title={task.title}
                                 date={task.date}
                                 description={task.description}
