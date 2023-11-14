@@ -16,7 +16,7 @@ export function FormSignIn() {
                 <legend> Login </legend>
 
                 <InputWrapper>
-                    <label htmlFor="userName">Nome de Usuario</label>
+                    <label htmlFor="userName">Nome de Usuario:</label>
                     <input
                         id="userName"
                         type="text"
@@ -26,7 +26,7 @@ export function FormSignIn() {
                 </InputWrapper>
 
                 <InputWrapper>
-                    <label htmlFor="password">Senha</label>
+                    <label htmlFor="password">Senha:</label>
                     <input
                         id="password"
                         type="password"

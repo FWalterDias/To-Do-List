@@ -17,7 +17,7 @@ export function SingUp() {
         if (hasToken) {
             navigate("/home");
         }
-    }, []);
+    });
     
     return (
         <ContainerSignUp>

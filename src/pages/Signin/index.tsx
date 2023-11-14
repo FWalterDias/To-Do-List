@@ -17,7 +17,7 @@ export function SingIn() {
         if (hasToken) {
             navigate("/home");
         }
-    }, []);
+    });
 
     return (
         <ContainerSigIn>

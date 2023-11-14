@@ -1,14 +1,24 @@
-import { Link } from "react-router-dom";
-import { Logo } from "../../components/Logo";
-import { ContainerHeader, ContainerProfile } from "./styles";
-import iconProfile from "../../assets/icone-User-Account.svg";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../Contexts/UserContext";
 import iconLogout from "../../assets/icon-logout.svg";
+import iconProfile from "../../assets/icone-User-Account.svg";
+import { Logo } from "../../components/Logo";
+import { useAuth } from "../../hooks/useAuth";
+import { ContainerHeader, ContainerProfile } from "./styles";
 
-type HeaderProps = {
-    userName: string
-}
 
-export function Header({ userName }: HeaderProps) {
+export function Header() {
+
+    const userValues = useContext(UserContext);
+    const { handleClearToken } = useAuth();
+    const navigate = useNavigate();
+    
+    function handleLogout(){
+        handleClearToken();
+        navigate("/");
+    }
+
     return (
         <ContainerHeader>
             <Logo />
@@ -17,12 +27,12 @@ export function Header({ userName }: HeaderProps) {
                 <img src={iconProfile} alt="icon-profile" />
 
                 <strong>
-                    {`Bem vindo(a), ${userName}`}
+                    {`Bem vindo(a), ${userValues?.userName}`}
                 </strong>
 
-                <Link to="/">
+                <button onClick={handleLogout}>
                     <img src={iconLogout} alt="icon-logout" />
-                </Link>
+                </button>
             </ContainerProfile>
         </ContainerHeader>
     );

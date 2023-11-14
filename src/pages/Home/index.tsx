@@ -5,7 +5,7 @@ import { ContainerHome } from "./styles"
 export function Home() {
     return (
         <ContainerHome>
-            <Header userName="johan" />
+            <Header />
             <Main />
         </ContainerHome>
     )

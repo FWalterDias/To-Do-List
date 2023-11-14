@@ -35,4 +35,10 @@ export const ContainerProfile = styled.div`
         font-size: 1.4rem;
         font-weight: 700;
     }
+
+    button{
+        all: unset;
+
+        cursor: pointer;
+    }
 `

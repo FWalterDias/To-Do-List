@@ -92,7 +92,6 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
             handleAddToken(token);
 
             navigate("/home");
-
         } catch (error) {
             alert("Erro ao cadastrar usuario");
         }
