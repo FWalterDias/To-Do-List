@@ -1,9 +1,5 @@
-import { createContext, ReactNode, useState } from "react";
-import { UserProps } from "../types/userProps";
-
-type UserProviderProps = {
-    children: ReactNode
-}
+import { createContext, useState } from "react";
+import { UserProps, UserProviderProps } from "../types/types";
 
 export const UserContext = createContext<UserProps>({
     user: "",

@@ -1,13 +1,5 @@
-import { createContext, ReactNode, useState } from "react";
-
-type ModalProviderProps = {
-    children: ReactNode
-}
-
-type ModalProps = {
-    isOpen: boolean,
-    setModal: (value: boolean) => void,
-}
+import { createContext, useState } from "react";
+import { ModalProps, ModalProviderProps } from "../types/types";
 
 export const ModalContext = createContext<ModalProps>({
     isOpen: false,

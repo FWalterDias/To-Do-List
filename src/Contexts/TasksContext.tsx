@@ -1,38 +1,5 @@
-import { createContext, ReactNode, useState } from "react";
-
-export type TasksProps = {
-    id: number,
-    setId: (value: number) => void,
-    title: string,
-    setTitle: (value: string) => void,
-    description: string,
-    setDescription: (value: string) => void,
-    date: string,
-    setDate: (value: string) => void,
-    status: number,
-    setStatus: (value: number) => void,
-    guidIdUser: string
-    setGuidIdUser: (value: string) => void
-    tasksList: TaskListProps[],
-    setTasksList: (value: TaskListProps[]) => void
-    filteredTaskList?: TaskListProps[],
-    setFilteredTaskList?: (value: TaskListProps[]) => void
-}
-
-export type TaskListProps = {
-    id: number,
-    title: string,
-    description: string,
-    date: string,
-    status: number,
-    guidIdUser: string,
-    filteredTaskList?: TaskListProps[],
-    setFilteredTaskList?: (value: TaskListProps[]) => void
-}
-
-type TasksProviderProps = {
-    children: ReactNode
-}
+import { createContext, useState } from "react";
+import { TaskListProps, TasksProps, TasksProviderProps } from "../types/types";
 
 export const TasksContext = createContext<TasksProps>({
     id: 0,

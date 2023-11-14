@@ -1,8 +1,6 @@
+import { ErrorComponentProps } from "../../types/types"
 import { ContainerError } from "./styles"
 
-type ErrorComponentProps = {
-    text: string
-}
 
 export function ErrorComponent({ text }: ErrorComponentProps) {
     return (

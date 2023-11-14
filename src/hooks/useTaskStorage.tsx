@@ -1,4 +1,4 @@
-import { TaskListProps } from "../Contexts/TasksContext";
+import { TaskListProps } from "../types/types";
 
 export function useTaskStorage() {
 
@@ -7,15 +7,15 @@ export function useTaskStorage() {
     }
 
     function handleGetTasks(): TaskListProps[] {
-        const allTasksSaved =  
-        localStorage.getItem("tasks") ? 
-        JSON.parse(localStorage.getItem("tasks")!) :
-        [];
+        const allTasksSaved =
+            localStorage.getItem("tasks") ?
+                JSON.parse(localStorage.getItem("tasks")!) :
+                [];
 
         return allTasksSaved;
     }
 
-    function hanldeClearTaks(){
+    function hanldeClearTaks() {
         localStorage.removeItem("tasks");
     }
 

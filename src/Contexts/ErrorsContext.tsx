@@ -1,15 +1,5 @@
-import { createContext, ReactNode, useState } from "react";
-
-type ErrorProviderProps = {
-    children: ReactNode
-}
-
-type ErrorProps = {
-    showError: boolean,
-    setShowError: (value: boolean) => void,
-    errorMensage: string,
-    setErrorMensage: (value: string) => void
-}
+import { createContext, useState } from "react";
+import { ErrorProps, ErrorProviderProps } from "../types/types";
 
 export const ErrorsContext = createContext<ErrorProps>({
     showError: false,

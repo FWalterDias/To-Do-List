@@ -6,15 +6,10 @@ import api from "../../api/api";
 import { useAuth } from "../../hooks/useAuth";
 import { ErrorsContext } from "../../Contexts/ErrorsContext";
 import { ModalContext } from "../../Contexts/ModalContext";
-import { TaskListProps, TasksContext } from "../../Contexts/TasksContext";
+import { TasksContext } from "../../Contexts/TasksContext";
 import { useTaskStorage } from "../../hooks/useTaskStorage";
+import { ButtonProps, TaskListProps } from "../../types/types";
 
-type ButtonProps = {
-    type: "signin" | "signup" | "task",
-    text: string,
-    btnWidth: "biggest" | "small"
-    action?: "signin" | "signup" | "addTask" | "openModal" | "closeModal",
-}
 
 export function Button({ type, text, btnWidth, action }: ButtonProps) {
 
@@ -27,7 +22,7 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
     const { handleAddToken, handleGetToken, handleAddUserName } = useAuth();
     const { handleInsertTask } = useTaskStorage();
 
-    function handleActions(e: React.FormEvent) {
+    async function handleActions(e: React.FormEvent) {
         e.preventDefault();
 
         if (type === "signup") navigate("/signup");
@@ -42,6 +37,7 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
 
         if (action === "closeModal") handleCloseModal();
     }
+
 
     async function handleLogin() {
         if (!userValues?.userName || !userValues?.password) {

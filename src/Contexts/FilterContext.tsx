@@ -1,15 +1,5 @@
-import { createContext, ReactNode, useState } from "react";
-
-type FilterProviderProps = {
-    children: ReactNode
-}
-
-type FilterProps = {
-    done: boolean,
-    setDone: (value: boolean) => void,
-    pending: boolean,
-    setPending: (value: boolean) => void
-}
+import { createContext, useState } from "react";
+import { FilterProps, FilterProviderProps } from "../types/types";
 
 export const FilterContext = createContext<FilterProps>({
     done: false,

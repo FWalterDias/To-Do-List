@@ -1,20 +1,15 @@
-import { ContainerCard, CotainerCardActions, ContainerHeaderCard, ContainerFooterCard, ContainerCardStatus, ContainerCardDone } from "./styles";
-import iconCheckBox from "../../assets/icon-checkbox.png";
-import iconCheckBoxChecked from "../../assets/checkbox-checked.svg";
-import iconDelete from "../../assets/icon-lixo.svg";
-import { useAuth } from "../../hooks/useAuth";
-import api from "../../api/api";
 import { useContext, useState } from "react";
 import { TasksContext } from "../../Contexts/TasksContext";
+import api from "../../api/api";
+import iconCheckBoxChecked from "../../assets/checkbox-checked.svg";
+import iconCheckBox from "../../assets/icon-checkbox.png";
+import iconDelete from "../../assets/icon-lixo.svg";
+import { useAuth } from "../../hooks/useAuth";
 import { useTaskStorage } from "../../hooks/useTaskStorage";
+import { CardProps } from "../../types/types";
+import { ContainerCard, ContainerCardDone, ContainerCardStatus, ContainerFooterCard, ContainerHeaderCard, CotainerCardActions } from "./styles";
 
-type CardProps = {
-    id: number
-    title: string,
-    description: string,
-    date: string,
-    status: number
-}
+
 
 export function Card({ id, title, description, date, status }: CardProps) {
 
