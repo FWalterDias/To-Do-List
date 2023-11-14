@@ -7,6 +7,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { ErrorsContext } from "../../Contexts/ErrorsContext";
 import { ModalContext } from "../../Contexts/ModalContext";
 import { TaskListProps, TasksContext } from "../../Contexts/TasksContext";
+import { useTaskStorage } from "../../hooks/useTaskStorage";
 
 type ButtonProps = {
     type: "signin" | "signup" | "task",
@@ -23,7 +24,8 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
     const tasks = useContext(TasksContext);
 
     const navigate = useNavigate();
-    const { handleAddToken, handleGetToken } = useAuth();
+    const { handleAddToken, handleGetToken, handleAddUserName } = useAuth();
+    const { handleInsertTask } = useTaskStorage();
 
     function handleActions(e: React.FormEvent) {
         e.preventDefault();
@@ -65,6 +67,8 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
 
             handleAddToken(token);
 
+            handleAddUserName(user.username);
+
             navigate("/home");
         } catch (error) {
             alert("Usuário ou senha incorreto");
@@ -100,6 +104,7 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
             const { token } = response.data;
 
             handleAddToken(token);
+            handleAddUserName(user.username);
 
             navigate("/home");
         } catch (error) {
@@ -194,9 +199,13 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
 
             const newTaskInfo: TaskListProps = response.data;
 
-            tasks.setTasksList([...tasks.tasksList, newTaskInfo]);
+            const newList = [...tasks.tasksList, newTaskInfo]  
 
-            modal.setModal(false)
+            tasks.setTasksList(newList);
+
+            handleInsertTask(newList);
+
+            modal.setModal(false);
         } catch (error) {
             alert("Erro ao cadastrar tarefa")
         }

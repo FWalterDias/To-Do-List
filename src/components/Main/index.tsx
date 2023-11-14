@@ -1,21 +1,28 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { TasksContext } from "../../Contexts/TasksContext";
+import { useTaskStorage } from "../../hooks/useTaskStorage";
 import { Button } from "../Button";
 import { Card } from "../Card";
 import { FilterButoton } from "../FilterButton";
 import { FilterOptions } from "../FitlterOptions";
-import { ContainerActions, ContainerActionsButtons, ContainerTasks, Containermain } from "./styles";
 import Modal from "../Modal";
-import { TasksContext } from "../../Contexts/TasksContext";
-import { useContext } from "react"
-import { useAuth } from "../../hooks/useAuth";
+import { ContainerActions, ContainerActionsButtons, ContainerTasks, Containermain } from "./styles";
 
 export function Main() {
 
     const [filterOpen, setFilterOpen] = useState<boolean>(false);
 
-    
+    const { handleGetTasks } = useTaskStorage();
 
     const tasks = useContext(TasksContext);
+
+    useEffect(()=> {
+
+        const tasksSaved = handleGetTasks();
+
+        tasks.setTasksList(tasksSaved)
+
+    }, [])
 
     return (
         <Containermain>

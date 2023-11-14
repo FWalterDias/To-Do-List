@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../Contexts/UserContext";
 import iconLogout from "../../assets/icon-logout.svg";
 import iconProfile from "../../assets/icone-User-Account.svg";
 import { Logo } from "../../components/Logo";
@@ -10,14 +8,15 @@ import { ContainerHeader, ContainerProfile } from "./styles";
 
 export function Header() {
 
-    const userValues = useContext(UserContext);
-    const { handleClearToken } = useAuth();
+    const { handleClearToken, handleGetUserName } = useAuth();
     const navigate = useNavigate();
-    
-    function handleLogout(){
+
+    function handleLogout() {
         handleClearToken();
         navigate("/");
     }
+
+    const userName = handleGetUserName();
 
     return (
         <ContainerHeader>
@@ -27,7 +26,7 @@ export function Header() {
                 <img src={iconProfile} alt="icon-profile" />
 
                 <strong>
-                    {`Bem vindo(a), ${userValues?.userName}`}
+                    {`Bem vindo(a), ${userName}`}
                 </strong>
 
                 <button onClick={handleLogout}>
