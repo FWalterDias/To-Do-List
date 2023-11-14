@@ -1,10 +1,9 @@
+import { useState } from "react";
 import { Button } from "../Button";
 import { Card } from "../Card";
 import { FilterButoton } from "../FilterButton";
 import { FilterOptions } from "../FitlterOptions";
-import Modal from "../Modal";
-import { Containermain, ContainerActions, ContainerActionsButtons, ContainerTasks } from "./styles";
-import { useState } from "react";
+import { ContainerActions, ContainerActionsButtons, ContainerTasks, Containermain } from "./styles";
 
 export function Main() {
 
@@ -31,8 +30,6 @@ export function Main() {
                 <Card />
             </ContainerTasks>
 
-
-            {/* <Modal /> */}
         </Containermain>
     )
 }

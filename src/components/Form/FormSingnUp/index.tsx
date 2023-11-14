@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../../../components/Button";
 import { ContainerFormSignUp, InputWrapper, ButtonsWrapper } from "./styles";
 import { useState } from "react";
+import { ErrorComponent } from "../../ErrorComponent";
 
 export function FormSignUp() {
 
@@ -9,6 +10,7 @@ export function FormSignUp() {
     const [userName, setUserName] = useState < string > ("");
     const [password, setPassword] = useState < string > ("");
     const [confirmPassword, setConfirmPassword] = useState < string > ("");
+    const [showError, setShowError] = useState<boolean>(false);
 
     return (
         <ContainerFormSignUp>
@@ -55,9 +57,15 @@ export function FormSignUp() {
                     />
                 </InputWrapper>
             </fieldset>
+            {showError && <ErrorComponent text="Preencha todos os campos" />}
 
             <ButtonsWrapper>
-                <Button type="signup" text="Cadastrar" btnWidth="biggest" />
+                <Button 
+                type="signup" 
+                text="Cadastrar" 
+                btnWidth="biggest" 
+                action="signup"
+                setShowError={setShowError} />
             </ButtonsWrapper>
 
             <strong>Já tem cadastro? 

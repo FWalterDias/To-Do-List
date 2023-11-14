@@ -47,8 +47,6 @@ export const ContainerTasks = styled.div`
     padding: 1rem;
     margin-bottom: 2rem;
 
-    background-color: red;
-
     @media (min-width: 1200px){
         max-height: 60rem;
         overflow-y: scroll;
