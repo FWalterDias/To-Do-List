@@ -17,7 +17,7 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
     const error = useContext(ErrorsContext);
     const modal = useContext(ModalContext);
     const tasks = useContext(TasksContext);
-
+    
     const navigate = useNavigate();
     const { handleAddToken, handleGetToken, handleAddUserName } = useAuth();
     const { handleInsertTask } = useTaskStorage();

@@ -1,5 +1,10 @@
 import { ReactNode } from "react";
 
+export type VisitorProps = {
+    userName: string,
+    password: string
+}
+
 export type UserProps = {
     user: string;
     setUser: (value: string) => void;
@@ -7,8 +12,10 @@ export type UserProps = {
     setUserName: (value: string) => void;
     password: string;
     setPassWord: (value: string) => void;
-    confirmPassword: string,
+    confirmPassword: string
     setConfirmPassWord: (value: string) => void;
+    visitor: VisitorProps;
+    setVisitor: (value: VisitorProps) => void;
 };
 
 export type ButtonProps = {

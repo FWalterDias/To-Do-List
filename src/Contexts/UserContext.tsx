@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { UserProps, UserProviderProps } from "../types/types";
+import { UserProps, UserProviderProps, VisitorProps } from "../types/types";
 
 export const UserContext = createContext<UserProps>({
     user: "",
@@ -9,7 +9,12 @@ export const UserContext = createContext<UserProps>({
     password: "",
     setPassWord: () => {},
     confirmPassword: "",
-    setConfirmPassWord: () => {}
+    setConfirmPassWord: () => {},
+    visitor: {
+        userName: "",
+        password: ""
+    },
+    setVisitor: () => { },
 });
 
 export function UserProvider({ children }: UserProviderProps) {
@@ -17,6 +22,10 @@ export function UserProvider({ children }: UserProviderProps) {
     const [userName, setUserName] = useState<string>("");
     const [password, setPassWord] = useState<string>("");
     const [confirmPassword, setConfirmPassWord] = useState<string>("");
+    const [visitor, setVisitor] = useState<VisitorProps>({
+        userName: "visitante",
+        password: "@Visitante123"
+    });
     
     const userContextValue: UserProps = {
         user,
@@ -26,7 +35,9 @@ export function UserProvider({ children }: UserProviderProps) {
         password,
         setPassWord,
         confirmPassword,
-        setConfirmPassWord
+        setConfirmPassWord,
+        visitor,
+        setVisitor
     };
 
     return (
