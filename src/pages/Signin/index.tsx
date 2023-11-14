@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import imgSignIn from "../../assets/img-signin.png";
 import { Form } from "../../components/Form";
@@ -6,9 +6,7 @@ import { Logo } from "../../components/Logo";
 import { useAuth } from "../../hooks/useAuth";
 import { ContainerSigIn } from "./styles";
 
-interface SignInProps {}
-
-const SignIn: React.FC<SignInProps> = () => {
+export default function SignIn() {
     const { handleGetToken } = useAuth();
     const navigate = useNavigate();
 
@@ -28,6 +26,4 @@ const SignIn: React.FC<SignInProps> = () => {
             <Form type="signin" />
         </ContainerSigIn>
     );
-};
-
-export default SignIn;
+}
