@@ -6,7 +6,7 @@ import api from "../../api/api";
 import { useAuth } from "../../hooks/useAuth";
 import { ErrorsContext } from "../../Contexts/ErrorsContext";
 import { ModalContext } from "../../Contexts/ModalContext";
-import { TasksContext } from "../../Contexts/TasksContext";
+import { TaskListProps, TasksContext } from "../../Contexts/TasksContext";
 
 type ButtonProps = {
     type: "signin" | "signup" | "task",
@@ -192,11 +192,11 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
                 }
             });
 
-            const newTaskInfo = response.data;
+            const newTaskInfo: TaskListProps = response.data;
 
-            console.log(newTaskInfo);
-            
-            
+            tasks.setTasksList([...tasks.tasksList, newTaskInfo]);
+
+            modal.setModal(false)
         } catch (error) {
             alert("Erro ao cadastrar tarefa")
         }

@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
 
-type TasksProps = {
+export type TasksProps = {
     id: number,
     setId: (value: number) => void,
     title: string,
@@ -11,8 +11,19 @@ type TasksProps = {
     setDate: (value: string) => void,
     status: number,
     setStatus: (value: number) => void,
-    guidUser: string
-    setGuidUser: (value: string) => void
+    guidIdUser: string
+    setGuidIdUser: (value: string) => void
+    tasksList: TaskListProps[],
+    setTasksList: (value: TaskListProps[]) => void
+}
+
+export type TaskListProps = {
+    id: number,
+    title: string,
+    description: string,
+    date: string,
+    status: number,
+    guidIdUser: string,
 }
 
 type TasksProviderProps = {
@@ -30,8 +41,10 @@ export const TasksContext = createContext<TasksProps>({
     setDate: () => { },
     status: 0,
     setStatus: () => { },
-    guidUser: "",
-    setGuidUser: () => { }
+    guidIdUser: "",
+    setGuidIdUser: () => { },
+    tasksList: [], 
+    setTasksList: () => { },
 });
 
 export function TasksProvider({ children }: TasksProviderProps) {
@@ -40,7 +53,8 @@ export function TasksProvider({ children }: TasksProviderProps) {
     const [description, setDescription] = useState<string>("");
     const [date, setDate] = useState<string>("");
     const [status, setStatus] = useState<number>(0);
-    const [guidUser, setGuidUser] = useState<string>("");
+    const [guidIdUser, setGuidIdUser] = useState<string>("");
+    const [tasksList, setTasksList] = useState<TaskListProps[]>([]);
 
     const tasksContextValue: TasksProps = {
         id,
@@ -53,8 +67,10 @@ export function TasksProvider({ children }: TasksProviderProps) {
         setDate,
         status,
         setStatus,
-        guidUser,
-        setGuidUser
+        guidIdUser,
+        setGuidIdUser,
+        tasksList,
+        setTasksList
     };
 
     return (

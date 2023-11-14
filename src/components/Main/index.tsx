@@ -5,24 +5,31 @@ import { FilterButoton } from "../FilterButton";
 import { FilterOptions } from "../FitlterOptions";
 import { ContainerActions, ContainerActionsButtons, ContainerTasks, Containermain } from "./styles";
 import Modal from "../Modal";
+import { TasksContext } from "../../Contexts/TasksContext";
+import { useContext } from "react"
+import { useAuth } from "../../hooks/useAuth";
 
 export function Main() {
 
     const [filterOpen, setFilterOpen] = useState<boolean>(false);
 
+    
+
+    const tasks = useContext(TasksContext);
+
     return (
         <Containermain>
             <ContainerActions>
                 <ContainerActionsButtons>
-                    <FilterButoton 
-                    filterOpen = {filterOpen}
-                    setFilterOpen={setFilterOpen} />
+                    <FilterButoton
+                        filterOpen={filterOpen}
+                        setFilterOpen={setFilterOpen} />
 
-                    <Button 
-                    type="task" 
-                    text="Adicionar Tarefa" 
-                    btnWidth="small" 
-                    action="openModal" />
+                    <Button
+                        type="task"
+                        text="Adicionar Tarefa"
+                        btnWidth="small"
+                        action="openModal" />
                 </ContainerActionsButtons>
 
                 {
@@ -32,14 +39,20 @@ export function Main() {
             </ContainerActions>
 
             <ContainerTasks>
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {
+                    tasks.tasksList.length > 0 ?
+                        tasks.tasksList.map((task) => (
+                            <Card
+                                key={task.id}
+                                title={task.title}
+                                date={task.date}
+                                description={task.description}
+                                status={task.status}
+                            />
+                        )) : "Nenhuma tarefa na lista"
+                }
             </ContainerTasks>
-            
+
             <Modal />
         </Containermain>
     )

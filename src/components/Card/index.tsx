@@ -2,7 +2,14 @@ import { ContainerCard, CotainerCardActions, ContainerHeaderCard, ContainerFoote
 import iconEdit from "../../assets/icon-editar.svg";
 import iconDelete from "../../assets/icon-lixo.svg";
 
-export function Card() {
+type CardProps = {
+    title: string,
+    description: string,
+    date: string,
+    status: number
+}
+
+export function Card({title, description, date, status}: CardProps) {
     return (
         <ContainerCard>
 
@@ -13,22 +20,22 @@ export function Card() {
 
             <ContainerHeaderCard>
                 <h3>
-                    Nome da tarefa
+                    {title}
                 </h3>
 
                 <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis iste in necessitatibus ea at? Omnis fuga minus dolor quas facere. Fuga possimus eos neque. Obcaecati facere excepturi repellat magni molestias!
+                    {description}
                 </p>
             </ContainerHeaderCard>
 
             <ContainerFooterCard>
                 <strong>
-                    data-da-tarefa
+                    {date}
                 </strong>
 
                 <ContainerCardStatus>
                     <strong>
-                        Concluido
+                        {status}
                     </strong>
                 </ContainerCardStatus>
             </ContainerFooterCard>
