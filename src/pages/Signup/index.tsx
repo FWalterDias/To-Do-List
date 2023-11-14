@@ -6,7 +6,7 @@ import { Logo } from "../../components/Logo";
 import { useAuth } from "../../hooks/useAuth";
 import { ContainerSignUp } from "./styles";
 
-export default function SignUp() {
+export function SignUp() {
     const { handleGetToken } = useAuth();
     const navigate = useNavigate();
 

@@ -1,6 +1,6 @@
 import { Route, Routes, Navigate, Outlet } from "react-router-dom";
-import  SingIn  from "./pages/SignIn";
-import  SingUp  from "./pages/SignUp";
+import { SignIn } from "./pages/SignIn/index.tsx";
+import { SignUp } from "./pages/SignUp/index.tsx";
 import { Home } from "./pages/Home";
 import { useAuth } from "./hooks/useAuth";
 
@@ -18,10 +18,10 @@ export function MainRoutes() {
 
   return (
     <Routes>
-      <Route path="/" element={<SingIn />} />
-      <Route path="/signin" element={<SingIn />} />
+      <Route path="/" element={<SignIn />} />
+      <Route path="/signin" element={<SignIn />} />
 
-      <Route path="/signup" element={<SingUp />} />
+      <Route path="/signup" element={<SignUp />} />
 
 
       <Route element={<ProtectedRouts redrectTo={"/"} />}>
