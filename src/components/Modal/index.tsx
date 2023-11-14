@@ -1,13 +1,12 @@
+import { useContext } from "react";
+import { ModalContext } from "../../Contexts/ModalContext";
+import iconCloseModal from "../../assets/icon-close-modal.svg";
 import { Form } from "../Form";
 import { ContainerModal, ContainerModalForm } from "./styles";
-import iconCloseModal from "../../assets/icon-close-modal.svg"
-import { ModalContext } from "../../Contexts/ModalContext";
-import { useContext } from "react"
 
 export default function Modal() {
 
     const modal = useContext(ModalContext);
-
     return (
         <>
             {

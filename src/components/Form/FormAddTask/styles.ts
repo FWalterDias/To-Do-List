@@ -68,6 +68,19 @@ export const InputWrapper = styled.div`
     select{
         background: none;
     }
+
+    textarea{
+        width: 100%;
+        resize: none;
+        padding: 1rem;
+
+        border: 1px solid #555; 
+        border-radius: .5rem; 
+        padding: 1rem;
+        font-family: "Roboto Condensed", sans-serif;
+
+        overflow: scroll;
+    }
 `
 
 export const ButtonsWrapper = styled.div`

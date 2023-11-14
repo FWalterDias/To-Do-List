@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ErrorsContext } from "../../../Contexts/ErrorsContex.tsx";
+import { ErrorsContext } from "../../../Contexts/ErrorsContext.tsx";
 import { UserContext } from "../../../Contexts/UserContext.tsx";
 import { Button } from "../../Button/index.tsx";
 import { ErrorComponent } from "../../ErrorComponent/index.tsx";
@@ -35,19 +35,19 @@ export function FormSignIn() {
                     />
                 </InputWrapper>
             </fieldset>
-            {error.showError && <ErrorComponent text={error.errorMensage} />} 
+            {error.showError && <ErrorComponent text={error.errorMensage} />}
 
             <ButtonsWrapper>
-                <Button 
-                type="signin" 
-                text="Entrar"
-                btnWidth="biggest"
-                action="signin"/>
+                <Button
+                    type="signin"
+                    text="Entrar"
+                    btnWidth="biggest"
+                    action="signin" />
 
-                <Button 
-                type="signup" 
-                text="Cadastrar-se" 
-                btnWidth="biggest" />
+                <Button
+                    type="signup"
+                    text="Cadastrar-se"
+                    btnWidth="biggest" />
             </ButtonsWrapper>
 
             <strong>Entrar sem cadastro</strong>

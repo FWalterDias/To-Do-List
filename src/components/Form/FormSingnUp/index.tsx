@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ErrorsContext } from "../../../Contexts/ErrorsContex";
+import { ErrorsContext } from "../../../Contexts/ErrorsContext";
 import { UserContext } from "../../../Contexts/UserContext";
 import { Button } from "../../../components/Button";
 import { ErrorComponent } from "../../ErrorComponent";
@@ -59,14 +59,14 @@ export function FormSignUp() {
             {error.showError && <ErrorComponent text={error.errorMensage} />}
 
             <ButtonsWrapper>
-                <Button 
-                type="signup" 
-                text="Cadastrar" 
-                btnWidth="biggest" 
-                action="signup" />
+                <Button
+                    type="signup"
+                    text="Cadastrar"
+                    btnWidth="biggest"
+                    action="signup" />
             </ButtonsWrapper>
 
-            <strong>Já tem cadastro? 
+            <strong>Já tem cadastro?
                 <Link to="/" >Clique Aqui</Link>
             </strong>
         </ContainerFormSignUp>

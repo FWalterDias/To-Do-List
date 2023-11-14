@@ -4,14 +4,15 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import api from "../../api/api";
 import { useAuth } from "../../hooks/useAuth";
-import { ErrorsContext } from "../../Contexts/ErrorsContex";
+import { ErrorsContext } from "../../Contexts/ErrorsContext";
 import { ModalContext } from "../../Contexts/ModalContext";
+import { TasksContext } from "../../Contexts/TasksContext";
 
 type ButtonProps = {
     type: "signin" | "signup" | "task",
     text: string,
     btnWidth: "biggest" | "small"
-    action?: "signin" | "signup" | "openModal" | "closeModal",
+    action?: "signin" | "signup" | "addTask" | "openModal" | "closeModal",
 }
 
 export function Button({ type, text, btnWidth, action }: ButtonProps) {
@@ -19,11 +20,10 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
     const userValues = useContext(UserContext);
     const error = useContext(ErrorsContext);
     const modal = useContext(ModalContext);
-
-    console.log(modal)
+    const tasks = useContext(TasksContext);
 
     const navigate = useNavigate();
-    const { handleAddToken } = useAuth();
+    const { handleAddToken, handleGetToken } = useAuth();
 
     function handleActions(e: React.FormEvent) {
         e.preventDefault();
@@ -33,6 +33,8 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
         if (action === "signin") handleLogin();
 
         if (action === "signup") handleSingUp();
+
+        if (action === "addTask") handleAddTask();
 
         if (action === "openModal") handleOpenModal();
 
@@ -84,7 +86,7 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
 
         const hasError = validatePassWord(userValues?.password, userValues?.confirmPassword);
 
-        if(hasError) return;
+        if (hasError) return;
 
         const user = {
             "username": userValues?.userName,
@@ -155,12 +157,50 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
         }
     }
 
-    function handleOpenModal(){
+    function handleOpenModal() {
         modal.setModal(true);
     }
 
-    function handleCloseModal(){
+    function handleCloseModal() {
         modal.setModal(false);
+    }
+
+    async function handleAddTask(){
+
+        if(!tasks.title || !tasks.description){
+            error.setShowError(true);
+            error.setErrorMensage("Prencha todos os campos");
+            
+            setTimeout(() => {
+                error.setShowError(false);
+            }, 2000);
+
+            return;
+        }
+
+        const newTask = {
+            title: tasks.title,
+            description: tasks.description
+        }
+
+        const token = handleGetToken();
+
+        try {
+            const response = await api.post("/api/ToDo", newTask, {
+                headers:{
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            const newTaskInfo = response.data;
+
+            console.log(newTaskInfo);
+            
+            
+        } catch (error) {
+            alert("Erro ao cadastrar tarefa")
+        }
+        
     }
 
     const buttonClasses = `${type} ${btnWidth}`

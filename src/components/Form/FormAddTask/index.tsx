@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { TasksContext } from "../../../Contexts/TasksContext";
 import { Button } from "../../Button";
 import { ButtonsWrapper, ContainerFormSignUp, InputWrapper } from "./styles";
+import { ErrorsContext } from "../../../Contexts/ErrorsContext";
+import { ErrorComponent } from "../../ErrorComponent";
 
 export function FormAddTask() {
 
-    const [name, setName] = useState<string>("");
-    const [description, setDescription] = useState<string>("");
-    const [status, setStatus] = useState<string>("Pendente");
+    const tasks = useContext(TasksContext);
+    const error = useContext(ErrorsContext);
 
     return (
         <ContainerFormSignUp>
@@ -18,36 +20,26 @@ export function FormAddTask() {
                     <input
                         id="name"
                         type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={tasks.title}
+                        onChange={(e) => tasks.setTitle(e.target.value)}
                     />
                 </InputWrapper>
 
                 <InputWrapper>
                     <label htmlFor="description">Descrição:</label>
-                    <input
+                    <textarea
                         id="description"
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        value={tasks.description}
+                        onChange={(e) => tasks.setDescription(e.target.value)}
+                        rows={4} 
+                        cols={50} 
                     />
                 </InputWrapper>
-
-                <InputWrapper>
-                    <label htmlFor="status">Status:</label>
-                    <select
-                        id="status"
-                        value={status}
-                        onChange={(e) => setStatus(e.target.value)}
-                    >
-                        <option value="Pendente">Pendente</option>
-                        <option value="Concluído">Concluído</option>
-                    </select>
-                </InputWrapper>
+                {error.showError && <ErrorComponent text={error.errorMensage} />}
             </fieldset>
 
             <ButtonsWrapper>
-                <Button type="task" text="Confirmar" btnWidth="small" />
+                <Button type="task" text="Confirmar" btnWidth="small" action="addTask" />
             </ButtonsWrapper>
         </ContainerFormSignUp>
     )

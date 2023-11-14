@@ -5,7 +5,16 @@ type UserProviderProps = {
     children: ReactNode
 }
 
-export const UserContext = createContext<UserProps | null>(null);
+export const UserContext = createContext<UserProps>({
+    user: "",
+    setUser: () => {},
+    userName: "",
+    setUserName: () => {},
+    password: "",
+    setPassWord: () => {},
+    confirmPassword: "",
+    setConfirmPassWord: () => {}
+});
 
 export function UserProvider({ children }: UserProviderProps) {
     const [user, setUser] = useState<string>("");
