@@ -31,7 +31,7 @@ export const ContainerFormSignUp = styled.form`
             justify-content: center;
 
             width: 100%;
-            margin: 4rem 0 2rem 0;
+            padding: 4rem 2rem 2rem 2rem;
             
             font-size: ${({ theme }) => theme.FONTS.FORM_TITLE};
             font-weight: 700;

@@ -39,7 +39,7 @@ export const ContainerFormSignUp = styled.form`
             justify-content: center;
 
             width: 100%;
-            margin: 2.8rem 0;
+            padding: 3rem 0;
 
             font-family: "Roboto", sans-serif;
             font-size: ${({ theme }) => theme.FONTS.FORM_TITLE};
