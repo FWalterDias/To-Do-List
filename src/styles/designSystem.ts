@@ -16,7 +16,7 @@ export default{
          FORM_TITLE: "3.2rem",
          FORM_INPUT: "2rem",
          
-         PROFILE_AREA: "3.6rem",
+         LOGO_AREA: "3.6rem",
 
          BUTTON_ADD_TASK: "1.6rem",
          BUTTON_CONFIRM_MODAL: "1.8rem",

@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { SingIn } from "./pages/SignIn";
 import { SingUp } from "./pages/SignUp";
+import { Home } from "./pages/Home";
 
 export function MainRoutes() {
 
@@ -10,6 +11,8 @@ export function MainRoutes() {
       <Route path="/signin" element={<SingIn />} />
 
       <Route path="/signup" element={<SingUp />} />
+
+      <Route path="/home" element={<Home />} />
 
       <Route path="*" element={"Pagina nao encontrada"} />
     </Routes>

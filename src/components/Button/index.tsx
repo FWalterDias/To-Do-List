@@ -11,7 +11,9 @@ export function Button({ type, text }: ButtonProps) {
     const navigate = useNavigate();
 
     function handleNavigate() {
-        if (type === "signup") navigate("/signup");
+        if (type === "signup") return navigate("/signup");
+
+        if(type === "signin") return navigate("/home");
     }
 
     return (

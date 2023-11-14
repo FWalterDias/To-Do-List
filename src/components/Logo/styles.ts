@@ -7,7 +7,7 @@ export const ContainerLogo = styled.div`
 
     margin-top: 2.6rem;
 
-    font-size: ${({ theme }) => theme.FONTS.PROFILE_AREA};
+    font-size: ${({ theme }) => theme.FONTS.LOGO_AREA};
     color: ${({ theme }) => theme.COLORS.WHITE};
 
     img{
