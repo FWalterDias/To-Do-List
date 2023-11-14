@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ErrorsContex } from "../../../Contexts/ErrorsContex";
+import { ErrorsContext } from "../../../Contexts/ErrorsContex";
 import { UserContext } from "../../../Contexts/UserContext";
 import { Button } from "../../../components/Button";
 import { ErrorComponent } from "../../ErrorComponent";
@@ -9,7 +9,7 @@ import { ButtonsWrapper, ContainerFormSignUp, InputWrapper } from "./styles";
 export function FormSignUp() {
 
     const userValues = useContext(UserContext);
-    const error = useContext(ErrorsContex);
+    const error = useContext(ErrorsContext);
 
     return (
         <ContainerFormSignUp>

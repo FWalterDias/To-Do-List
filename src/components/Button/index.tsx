@@ -4,24 +4,28 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import api from "../../api/api";
 import { useAuth } from "../../hooks/useAuth";
-import { ErrorsContex } from "../../Contexts/ErrorsContex";
+import { ErrorsContext } from "../../Contexts/ErrorsContex";
+import { ModalContext } from "../../Contexts/ModalContext";
 
 type ButtonProps = {
     type: "signin" | "signup" | "task",
     text: string,
     btnWidth: "biggest" | "small"
-    action?: "signin" | "signup",
+    action?: "signin" | "signup" | "openModal" | "closeModal",
 }
 
 export function Button({ type, text, btnWidth, action }: ButtonProps) {
 
     const userValues = useContext(UserContext);
-    const error = useContext(ErrorsContex);
+    const error = useContext(ErrorsContext);
+    const modal = useContext(ModalContext);
+
+    console.log(modal)
 
     const navigate = useNavigate();
     const { handleAddToken } = useAuth();
 
-    function handleFormAction(e: React.FormEvent) {
+    function handleActions(e: React.FormEvent) {
         e.preventDefault();
 
         if (type === "signup") navigate("/signup");
@@ -29,6 +33,10 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
         if (action === "signin") handleLogin();
 
         if (action === "signup") handleSingUp();
+
+        if (action === "openModal") handleOpenModal();
+
+        if (action === "closeModal") handleCloseModal();
     }
 
     async function handleLogin() {
@@ -147,10 +155,18 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
         }
     }
 
+    function handleOpenModal(){
+        modal.setModal(true);
+    }
+
+    function handleCloseModal(){
+        modal.setModal(false);
+    }
+
     const buttonClasses = `${type} ${btnWidth}`
 
     return (
-        <ContainerButton className={buttonClasses} onClick={handleFormAction}>
+        <ContainerButton className={buttonClasses} onClick={handleActions}>
             {text}
         </ContainerButton>
     )

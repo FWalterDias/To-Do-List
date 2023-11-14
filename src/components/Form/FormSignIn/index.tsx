@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ErrorsContex } from "../../../Contexts/ErrorsContex.tsx";
+import { ErrorsContext } from "../../../Contexts/ErrorsContex.tsx";
 import { UserContext } from "../../../Contexts/UserContext.tsx";
 import { Button } from "../../Button/index.tsx";
 import { ErrorComponent } from "../../ErrorComponent/index.tsx";
@@ -8,7 +8,7 @@ import { ButtonsWrapper, ContainerFormSignIn, InputWrapper } from "./styles.ts";
 export function FormSignIn() {
 
     const userValues = useContext(UserContext);
-    const error = useContext(ErrorsContex);
+    const error = useContext(ErrorsContext);
 
     return (
         <ContainerFormSignIn>

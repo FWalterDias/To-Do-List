@@ -11,7 +11,7 @@ type ErrorProps = {
     setErrorMensage: (value: string) => void
 }
 
-export const ErrorsContex = createContext<ErrorProps>({
+export const ErrorsContext = createContext<ErrorProps>({
     showError: false,
     setShowError: () => {},
     errorMensage: "",
@@ -23,7 +23,7 @@ export function ErrorProvider({ children }: ErrorProviderProps) {
     const [showError, setShowError] = useState<boolean>(false);
     const [errorMensage, setErrorMensage] = useState<string>("");
     
-    const userContextValue: ErrorProps = {
+    const errorContextValue: ErrorProps = {
         showError,
         setShowError,
         errorMensage,
@@ -31,8 +31,8 @@ export function ErrorProvider({ children }: ErrorProviderProps) {
     };
 
     return (
-        <ErrorsContex.Provider value={userContextValue}>
+        <ErrorsContext.Provider value={errorContextValue}>
             {children}
-        </ErrorsContex.Provider>
+        </ErrorsContext.Provider>
     )
 }
