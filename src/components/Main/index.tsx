@@ -1,44 +1,23 @@
 import { useContext, useEffect, useState } from "react";
 import { TasksContext } from "../../contexts/TasksContext";
-import api from "../../api/api";
-import { useAuth } from "../../hooks/useAuth";
 import { Button } from "../Button";
 import { Card } from "../Card";
 import { FilterButoton } from "../FilterButton";
 import { FilterOptions } from "../FitlterOptions";
 import Modal from "../Modal";
 import { ContainerActions, ContainerActionsButtons, ContainerTasks, Containermain } from "./styles";
+import { useTasksActions } from "../../hooks/useTasksActions";
 
 export function Main() {
 
     const [filterOpen, setFilterOpen] = useState<boolean>(false);
-
-    const { handleGetToken } = useAuth();
-
     const tasks = useContext(TasksContext);
+    const { handleGetTasksUser } = useTasksActions();
     
     useEffect(() => {
-        async function handleGetTasksUser() {
-            try {
-
-                const token = handleGetToken();
-
-                const response = await api.get("/api/ToDo", {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
-
-                tasks.setTasksList(response.data)
-
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
         handleGetTasksUser();
     }, []);
-    console.log(tasks.tasksList.length)
+    
     return (
         <Containermain>
             <ContainerActions>
