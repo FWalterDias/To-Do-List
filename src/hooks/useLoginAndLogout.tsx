@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/api";
-import { ErrorsContext } from "../contexts/ErrorsContext";
-import { TasksContext } from "../contexts/TasksContext";
-import { UserContext } from "../contexts/UserContext";
+import { ErrorsContext } from "../Contexts/ErrorsContext";
+import { TasksContext } from "../Contexts/TasksContext";
+import { UserContext } from "../Contexts/UserContext";
 import { useAuth } from "./useAuth";
 
 

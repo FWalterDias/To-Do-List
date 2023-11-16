@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useTasksActions } from "../../hooks/useTasksActions";
 import { ContainerFilterOptions, ContainerFilterOptionsOptions } from "./styles";
-import { FilterContext } from "../../contexts/FilterContext";
+import { FilterContext } from "../../Contexts/FilterContext";
 
 export function FilterOptions() {
 

@@ -5,11 +5,11 @@ import GlobalStyle from './styles/globalStyle.ts';
 import theme from "./styles/designSystem.ts";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from 'react-router-dom';
-import { UserProvider } from './contexts/UserContext.tsx';
-import { ErrorProvider } from "./contexts/ErrorsContext.tsx";
-import { ModalProvider } from "./contexts/ModalContext.tsx";
-import { TasksProvider } from "./contexts/TasksContext.tsx";
-import { FilterProvider } from './contexts/FilterContext.tsx';
+import { UserProvider } from './Contexts/UserContext.tsx';
+import { ErrorProvider } from "./Contexts/ErrorsContext.tsx";
+import { ModalProvider } from "./Contexts/ModalContext.tsx";
+import { TasksProvider } from "./Contexts/TasksContext.tsx";
+import { FilterProvider } from './Contexts/FilterContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

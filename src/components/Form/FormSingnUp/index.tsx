@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ErrorsContext } from "../../../contexts/ErrorsContext";
-import { UserContext } from "../../../contexts/UserContext";
+import { ErrorsContext } from "../../../Contexts/ErrorsContext";
+import { UserContext } from "../../../Contexts/UserContext";
 import { Button } from "../../../components/Button";
 import { ErrorComponent } from "../../ErrorComponent";
 import { ButtonsWrapper, ContainerFormSignUp, InputWrapper } from "./styles";

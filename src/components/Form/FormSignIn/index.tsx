@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ErrorsContext } from "../../../contexts/ErrorsContext.tsx";
-import { UserContext } from "../../../contexts/UserContext.tsx";
+import { ErrorsContext } from "../../../Contexts/ErrorsContext.tsx";
+import { UserContext } from "../../../Contexts/UserContext.tsx";
 import { useLoginAndLogout } from "../../../hooks/useLoginAndLogout.tsx";
 import { Button } from "../../Button/index.tsx";
 import { ErrorComponent } from "../../ErrorComponent/index.tsx";

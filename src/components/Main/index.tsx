@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { TasksContext } from "../../contexts/TasksContext";
+import { TasksContext } from "../../Contexts/TasksContext";
 import { Button } from "../Button";
 import { Card } from "../Card";
 import { FilterButoton } from "../FilterButton";
@@ -13,11 +13,11 @@ export function Main() {
     const [filterOpen, setFilterOpen] = useState<boolean>(false);
     const tasks = useContext(TasksContext);
     const { handleGetTasksUser } = useTasksActions();
-    
+
     useEffect(() => {
         handleGetTasksUser();
     }, []);
-    
+
     return (
         <Containermain>
             <ContainerActions>
@@ -54,17 +54,17 @@ export function Main() {
                         ))
                     ) : tasks.tasksList.length > 0 ? (
                         tasks.tasksList
-                        .sort((a, b) => a.id - b.id)
-                        .map((task) => (
-                            <Card
-                                key={task.id}
-                                id={task.id}
-                                title={task.title}
-                                date={task.date}
-                                description={task.description}
-                                status={task.status}
-                            />
-                        ))
+                            .sort((a, b) => a.id - b.id)
+                            .map((task) => (
+                                <Card
+                                    key={task.id}
+                                    id={task.id}
+                                    title={task.title}
+                                    date={task.date}
+                                    description={task.description}
+                                    status={task.status}
+                                />
+                            ))
                     ) : (
                         "Nenhuma tarefa na lista"
                     )

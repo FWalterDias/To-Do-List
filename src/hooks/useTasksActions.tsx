@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { ErrorsContext } from "../contexts/ErrorsContext";
-import { TasksContext } from "../contexts/TasksContext";
+import { ErrorsContext } from "../Contexts/ErrorsContext";
+import { TasksContext } from "../Contexts/TasksContext";
 import { useAuth } from "./useAuth";
 import api from "../api/api";
 import { TaskListProps } from "../types/types";
 import { useTaskStorage } from "./useTaskStorage";
 import { useModalActions } from "./useModalActions";
-import { FilterContext } from "../contexts/FilterContext";
+import { FilterContext } from "../Contexts/FilterContext";
 
 export function useTasksActions() {
 

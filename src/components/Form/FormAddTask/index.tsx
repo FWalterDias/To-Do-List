@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { TasksContext } from "../../../contexts/TasksContext";
+import { TasksContext } from "../../../Contexts/TasksContext";
 import { Button } from "../../Button";
 import { ButtonsWrapper, ContainerFormSignUp, InputWrapper } from "./styles";
-import { ErrorsContext } from "../../../contexts/ErrorsContext";
+import { ErrorsContext } from "../../../Contexts/ErrorsContext";
 import { ErrorComponent } from "../../ErrorComponent";
 
 export function FormAddTask() {
