@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
-import { FilterContext } from "../../Contexts/FilterContext";
-import { TasksContext } from "../../Contexts/TasksContext";
+import { FilterContext } from "../../contexts/FilterContext";
+import { TasksContext } from "../../contexts/TasksContext";
 import { ContainerFilterOptions, ContainerFilterOptionsOptions } from "./styles";
 
 export function FilterOptions() {
@@ -14,15 +14,13 @@ export function FilterOptions() {
 
 
         if (filter.pending && !filter.done) {
-
             filteredTasks = allTaskts.filter((task) => task.status === 0);
 
             task.setFilteredTaskList!(filteredTasks);
-
         } else if (!filter.pending && filter.done) {
             filteredTasks = allTaskts.filter((task) => task.status === 1);
 
-            task.setFilteredTaskList!(filteredTasks);
+            task.setFilteredTaskList!(filteredTasks); 
         } else {
             task.setFilteredTaskList!([]);
         }

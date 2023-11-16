@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ErrorsContext } from "../../Contexts/ErrorsContext";
-import { ModalContext } from "../../Contexts/ModalContext";
-import { TasksContext } from "../../Contexts/TasksContext";
-import { UserContext } from "../../Contexts/UserContext";
+import { ErrorsContext } from "../../contexts/ErrorsContext";
+import { ModalContext } from "../../contexts/ModalContext";
+import { TasksContext } from "../../contexts/TasksContext";
+import { UserContext } from "../../contexts/UserContext";
 import api from "../../api/api";
 import { useAuth } from "../../hooks/useAuth";
 import { useTaskStorage } from "../../hooks/useTaskStorage";
@@ -17,7 +17,7 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
     const error = useContext(ErrorsContext);
     const modal = useContext(ModalContext);
     const tasks = useContext(TasksContext);
-    
+
     const navigate = useNavigate();
     const { handleAddToken, handleGetToken, handleAddUserName } = useAuth();
     const { handleInsertTask } = useTaskStorage();
@@ -166,12 +166,12 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
         modal.setModal(false);
     }
 
-    async function handleAddTask(){
+    async function handleAddTask() {
 
-        if(!tasks.title || !tasks.description){
+        if (!tasks.title || !tasks.description) {
             error.setShowError(true);
             error.setErrorMensage("Prencha todos os campos");
-            
+
             setTimeout(() => {
                 error.setShowError(false);
             }, 2000);
@@ -188,24 +188,27 @@ export function Button({ type, text, btnWidth, action }: ButtonProps) {
 
         try {
             const response = await api.post("/api/ToDo", newTask, {
-                headers:{
+                headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
 
             const newTaskInfo: TaskListProps = response.data;
 
-            const newList = [...tasks.tasksList, newTaskInfo]  
+            const newList = [...tasks.tasksList, newTaskInfo]
 
             tasks.setTasksList(newList);
 
             handleInsertTask(newList);
 
+            tasks.setTitle("");
+
+            tasks.setDescription("");
+
             modal.setModal(false);
         } catch (error) {
             alert("Erro ao cadastrar tarefa")
         }
-        
     }
 
     const buttonClasses = `${type} ${btnWidth}`

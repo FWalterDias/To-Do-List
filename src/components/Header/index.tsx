@@ -4,14 +4,39 @@ import iconProfile from "../../assets/icone-User-Account.svg";
 import { Logo } from "../../components/Logo";
 import { useAuth } from "../../hooks/useAuth";
 import { ContainerHeader, ContainerProfile } from "./styles";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import { TasksContext } from "../../contexts/TasksContext";
+import api from "../../api/api";
 
 
 export function Header() {
 
-    const { handleClearToken, handleGetUserName } = useAuth();
+    const userValues = useContext(UserContext);
+    const tasks = useContext(TasksContext);
+
+    const { handleClearToken, handleGetUserName, handleGetToken } = useAuth();
     const navigate = useNavigate();
 
-    function handleLogout() {
+    async function handleLogout() {
+        if (!userValues.userName) {
+            try {
+                const token = handleGetToken();
+
+                const allTasks = tasks.tasksList;
+                
+                for(const task of allTasks){
+                    await api.delete(`/api/ToDo/${task.id}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
+                }  
+            } catch (error) {
+                console.log(error);
+            }
+            
+        }
         handleClearToken();
         navigate("/");
     }

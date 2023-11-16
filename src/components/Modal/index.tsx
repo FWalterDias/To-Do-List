@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ModalContext } from "../../Contexts/ModalContext";
+import { ModalContext } from "../../contexts/ModalContext";
 import iconCloseModal from "../../assets/icon-close-modal.svg";
 import { Form } from "../Form";
 import { ContainerModal, ContainerModalForm } from "./styles";

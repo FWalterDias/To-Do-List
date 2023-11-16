@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { TasksContext } from "../../../Contexts/TasksContext";
+import { TasksContext } from "../../../contexts/TasksContext";
 import { Button } from "../../Button";
 import { ButtonsWrapper, ContainerFormSignUp, InputWrapper } from "./styles";
-import { ErrorsContext } from "../../../Contexts/ErrorsContext";
+import { ErrorsContext } from "../../../contexts/ErrorsContext";
 import { ErrorComponent } from "../../ErrorComponent";
 
 export function FormAddTask() {
@@ -31,8 +31,8 @@ export function FormAddTask() {
                         id="description"
                         value={tasks.description}
                         onChange={(e) => tasks.setDescription(e.target.value)}
-                        rows={4} 
-                        cols={50} 
+                        rows={4}
+                        cols={50}
                     />
                 </InputWrapper>
                 {error.showError && <ErrorComponent text={error.errorMensage} />}

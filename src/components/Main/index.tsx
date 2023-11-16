@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { TasksContext } from "../../Contexts/TasksContext";
+import { TasksContext } from "../../contexts/TasksContext";
 import api from "../../api/api";
 import { useAuth } from "../../hooks/useAuth";
 import { Button } from "../Button";
@@ -16,7 +16,7 @@ export function Main() {
     const { handleGetToken } = useAuth();
 
     const tasks = useContext(TasksContext);
-
+    
     useEffect(() => {
         async function handleGetTasksUser() {
             try {
@@ -38,7 +38,7 @@ export function Main() {
 
         handleGetTasksUser();
     }, []);
-
+    console.log(tasks.tasksList.length)
     return (
         <Containermain>
             <ContainerActions>
@@ -74,7 +74,9 @@ export function Main() {
                             />
                         ))
                     ) : tasks.tasksList.length > 0 ? (
-                        tasks.tasksList.map((task) => (
+                        tasks.tasksList
+                        .sort((a, b) => a.id - b.id)
+                        .map((task) => (
                             <Card
                                 key={task.id}
                                 id={task.id}

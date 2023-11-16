@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { ErrorsContext } from "../../../Contexts/ErrorsContext.tsx";
-import { UserContext } from "../../../Contexts/UserContext.tsx";
+import { ErrorsContext } from "../../../contexts/ErrorsContext.tsx";
+import { UserContext } from "../../../contexts/UserContext.tsx";
 import api from "../../../api/api.tsx";
 import { useAuth } from "../../../hooks/useAuth.tsx";
 import { Button } from "../../Button/index.tsx";

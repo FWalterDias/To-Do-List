@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { TasksContext } from "../../Contexts/TasksContext";
+import { TasksContext } from "../../contexts/TasksContext";
 import api from "../../api/api";
 import iconCheckBoxChecked from "../../assets/checkbox-checked.svg";
 import iconCheckBox from "../../assets/icon-checkbox.png";
