@@ -5,11 +5,12 @@ import { UserContext } from "../../../Contexts/UserContext";
 import { Button } from "../../../components/Button";
 import { ErrorComponent } from "../../ErrorComponent";
 import { ButtonsWrapper, ContainerFormSignUp, InputWrapper } from "./styles";
+import { ErrorProps, UserProps } from "../../../types/types";
 
 export function FormSignUp() {
 
-    const userValues = useContext(UserContext);
-    const error = useContext(ErrorsContext);
+    const userValues: UserProps = useContext(UserContext);
+    const error: ErrorProps = useContext(ErrorsContext);
 
     return (
         <ContainerFormSignUp>
@@ -21,7 +22,7 @@ export function FormSignUp() {
                     <input
                         id="name"
                         type="text"
-                        value={userValues?.user}
+                        value={userValues.user}
                         onChange={(e) => userValues?.setUser(e.target.value)}
                     />
                 </InputWrapper>
@@ -31,7 +32,7 @@ export function FormSignUp() {
                     <input
                         id="userName"
                         type="text"
-                        value={userValues?.userName}
+                        value={userValues.userName}
                         onChange={(e) => userValues?.setUserName(e.target.value)}
                     />
                 </InputWrapper>
@@ -41,7 +42,7 @@ export function FormSignUp() {
                     <input
                         id="password"
                         type="password"
-                        value={userValues?.password}
+                        value={userValues.password}
                         onChange={(e) => userValues?.setPassWord(e.target.value)}
                     />
                 </InputWrapper>

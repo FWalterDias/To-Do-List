@@ -7,11 +7,12 @@ import { FilterOptions } from "../FitlterOptions";
 import Modal from "../Modal";
 import { ContainerActions, ContainerActionsButtons, ContainerTasks, Containermain } from "./styles";
 import { useTasksActions } from "../../hooks/useTasksActions";
+import { TasksProps } from "../../types/types";
 
 export function Main() {
 
     const [filterOpen, setFilterOpen] = useState<boolean>(false);
-    const tasks = useContext(TasksContext);
+    const tasks: TasksProps = useContext(TasksContext);
     const { handleGetTasksUser } = useTasksActions();
 
     useEffect(() => {

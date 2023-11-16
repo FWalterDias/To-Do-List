@@ -4,11 +4,12 @@ import { Button } from "../../Button";
 import { ButtonsWrapper, ContainerFormSignUp, InputWrapper } from "./styles";
 import { ErrorsContext } from "../../../Contexts/ErrorsContext";
 import { ErrorComponent } from "../../ErrorComponent";
+import { ErrorProps, TasksProps } from "../../../types/types";
 
 export function FormAddTask() {
 
-    const tasks = useContext(TasksContext);
-    const error = useContext(ErrorsContext);
+    const tasks: TasksProps = useContext(TasksContext);
+    const error: ErrorProps = useContext(ErrorsContext);
 
     return (
         <ContainerFormSignUp>

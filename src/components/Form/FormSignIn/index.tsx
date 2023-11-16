@@ -5,11 +5,12 @@ import { useLoginAndLogout } from "../../../hooks/useLoginAndLogout.tsx";
 import { Button } from "../../Button/index.tsx";
 import { ErrorComponent } from "../../ErrorComponent/index.tsx";
 import { ButtonsWrapper, ContainerFormSignIn, InputWrapper } from "./styles.ts";
+import { ErrorProps, UserProps } from "../../../types/types.tsx";
 
 export function FormSignIn() {
 
-    const userValues = useContext(UserContext);
-    const error = useContext(ErrorsContext);
+    const userValues: UserProps = useContext(UserContext);
+    const error: ErrorProps = useContext(ErrorsContext);
     const { handleLoginVisitor } = useLoginAndLogout();
 
     return (

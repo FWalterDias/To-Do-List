@@ -2,15 +2,16 @@ import { useContext, useEffect } from "react";
 import { useTasksActions } from "../../hooks/useTasksActions";
 import { ContainerFilterOptions, ContainerFilterOptionsOptions } from "./styles";
 import { FilterContext } from "../../Contexts/FilterContext";
+import { FilterProps } from "../../types/types";
 
 export function FilterOptions() {
 
     const { handleFilterTasks } = useTasksActions();
-    const filter = useContext(FilterContext);
+    const filter: FilterProps  = useContext(FilterContext);
 
     useEffect(() => {
         handleFilterTasks();
-    }, [filter])
+    }, [filter]);
 
     return (
         <ContainerFilterOptions>
