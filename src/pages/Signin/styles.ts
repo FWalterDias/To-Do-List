@@ -2,7 +2,7 @@ import styled, {keyframes} from "styled-components";
 
 const fadeInImgLogin = keyframes`
     from{
-        transform: translateX(-50%);
+        transform: translateX(-25%);
         opacity: .5;
     }
 `
@@ -22,7 +22,7 @@ export const ContainerSigIn = styled.div`
         width: min(32.5rem, 100%);
         max-width: 65rem;
 
-        animation: ${fadeInImgLogin} 1s ease-in-out;
+        animation: ${fadeInImgLogin} .5s ease-in-out;
     }
 
     @media (min-width: 1200px) {

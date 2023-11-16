@@ -2,7 +2,7 @@ import styled, {keyframes} from "styled-components";
 
 const fadeInFormSigup = keyframes`
     from{
-        transform: translatey(50%);
+        transform: translatey(25%);
         opacity: .5;
     }
 `
@@ -22,7 +22,7 @@ export const ContainerFormSignUp = styled.form`
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.50);
     border-radius: 1rem; 
 
-    animation: ${fadeInFormSigup} 1s ease-in-out;
+    animation: ${fadeInFormSigup} .5s ease-in-out;
 
     
     fieldset{

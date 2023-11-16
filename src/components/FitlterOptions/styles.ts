@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 const fadeInConatinerFilter = keyframes`
     from {
         opacity: 0;
-        transform: translateY(-50%);
+        transform: translateY(-25%);
         }
     to {
         opacity: 1;
@@ -26,7 +26,7 @@ export const ContainerFilterOptions = styled.div`
     border-radius: 10px; 
     box-shadow: 0px 2px 11px 0px rgba(0, 0, 0, 0.10);
 
-    animation: ${fadeInConatinerFilter} 1s ease-in-out;
+    animation: ${fadeInConatinerFilter} .5s ease-in-out;
 
     span{
         color:  ${({ theme }) => theme.COLORS.LIGTH_GRAY};
