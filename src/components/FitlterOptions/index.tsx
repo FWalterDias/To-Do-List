@@ -1,30 +1,12 @@
 import { useContext, useEffect } from "react";
-import { FilterContext } from "../../contexts/FilterContext";
-import { TasksContext } from "../../contexts/TasksContext";
+import { useTasksActions } from "../../hooks/useTasksActions";
 import { ContainerFilterOptions, ContainerFilterOptionsOptions } from "./styles";
+import { FilterContext } from "../../contexts/FilterContext";
 
 export function FilterOptions() {
 
-    const task = useContext(TasksContext);
+    const { handleFilterTasks } = useTasksActions();
     const filter = useContext(FilterContext);
-
-    const handleFilterTasks = () => {
-        const allTaskts = task.tasksList;
-        let filteredTasks = task.filteredTaskList!;
-
-
-        if (filter.pending && !filter.done) {
-            filteredTasks = allTaskts.filter((task) => task.status === 0);
-
-            task.setFilteredTaskList!(filteredTasks);
-        } else if (!filter.pending && filter.done) {
-            filteredTasks = allTaskts.filter((task) => task.status === 1);
-
-            task.setFilteredTaskList!(filteredTasks); 
-        } else {
-            task.setFilteredTaskList!([]);
-        }
-    };
 
     useEffect(() => {
         handleFilterTasks();

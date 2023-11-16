@@ -1,11 +1,8 @@
-import { useContext, useState } from "react";
-import { TasksContext } from "../../contexts/TasksContext";
-import api from "../../api/api";
+import { useState } from "react";
 import iconCheckBoxChecked from "../../assets/checkbox-checked.svg";
 import iconCheckBox from "../../assets/icon-checkbox.png";
 import iconDelete from "../../assets/icon-lixo.svg";
-import { useAuth } from "../../hooks/useAuth";
-import { useTaskStorage } from "../../hooks/useTaskStorage";
+import { useTasksActions } from "../../hooks/useTasksActions";
 import { CardProps } from "../../types/types";
 import { ContainerCard, ContainerCardDone, ContainerCardStatus, ContainerFooterCard, ContainerHeaderCard, CotainerCardActions } from "./styles";
 
@@ -13,56 +10,15 @@ import { ContainerCard, ContainerCardDone, ContainerCardStatus, ContainerFooterC
 
 export function Card({ id, title, description, date, status }: CardProps) {
 
-    const { handleGetToken } = useAuth();
-    const { handleInsertTask } = useTaskStorage();
-    const tasks = useContext(TasksContext);
     const [done, setDone] = useState<number>(status);
+    const { handleDeleteTask, handleMarkAsDone } = useTasksActions();
 
-    async function handleDeleteTask() {
-        try {
-            const token = handleGetToken();
+    async function markAsDone() {
+        const taskDone = await handleMarkAsDone(id);
 
-            await api.delete(`/api/ToDo/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-
-            const filteredList = tasks.tasksList.filter((task) => task.id !== id);
-
-            tasks.setTasksList(filteredList);
-
-            handleInsertTask(filteredList);
-
-        } catch (error) {
-            console.log(error);
-        }
+        return taskDone ? setDone(taskDone) : 0;
     }
 
-    async function handleMarkAsDone() {
-
-        try {
-            const token = handleGetToken();
-
-            await api.get(`/api/ToDo/MarkAsDone/${id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-
-            const response = await api.get("/api/ToDo", {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-
-            tasks.setTasksList(response.data);
-
-            setDone(1);
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
     return (
         <ContainerCard className={done === 1 ? "done" : ""}>
@@ -72,8 +28,8 @@ export function Card({ id, title, description, date, status }: CardProps) {
             }
 
             <CotainerCardActions>
-                <img src={done ? iconCheckBoxChecked : iconCheckBox} alt="icon-Checkbox" onClick={handleMarkAsDone} />
-                <img src={iconDelete} alt="icon-Delete" onClick={handleDeleteTask} />
+                <img src={done ? iconCheckBoxChecked : iconCheckBox} alt="icon-Checkbox" onClick={markAsDone} />
+                <img src={iconDelete} alt="icon-Delete" onClick={async () => await handleDeleteTask(id)} />
             </CotainerCardActions>
 
             <ContainerHeaderCard>

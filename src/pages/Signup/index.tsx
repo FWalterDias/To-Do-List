@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import imgSignUp from "../../assets/img-signup.png";
 import { Form } from "../../components/Form";
 import { Logo } from "../../components/Logo";
@@ -7,16 +6,11 @@ import { useAuth } from "../../hooks/useAuth";
 import { ContainerSignUp } from "./styles";
 
 export function SignUp() {
-    const { handleGetToken } = useAuth();
-    const navigate = useNavigate();
+    const { handleVerifyToken } = useAuth();
 
     useEffect(() => {
-        const hasToken = handleGetToken();
-
-        if (hasToken) {
-            navigate("/home");
-        }
-    }, [handleGetToken, navigate]);
+        handleVerifyToken();
+    }, []);
 
     return (
         <ContainerSignUp>
