@@ -77,8 +77,8 @@ export function useTasksActions() {
                     Authorization: `Bearer ${token}`
                 }
             });
-
-            tasks.setTasksList(response.data)
+            
+            tasks.setTasksList(response.data);
 
         } catch (erro) {
             alert("Erro ao buscar as taefas no servidor")
@@ -149,11 +149,22 @@ export function useTasksActions() {
         }
     }
 
+    async function clearTasksVisitor() {
+        const allTasks = tasks.tasksList;
+    
+        for(const task of allTasks){
+            await handleDeleteTask(task.id);
+        }
+
+        await handleGetTasksUser();
+    }
+
     return {
         handleAddTask,
         handleGetTasksUser,
         handleDeleteTask,
         handleMarkAsDone,
-        handleFilterTasks
+        handleFilterTasks,
+        clearTasksVisitor
     }
 }

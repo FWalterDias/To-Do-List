@@ -1,20 +1,17 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../api/api";
 import { ErrorsContext } from "../Contexts/ErrorsContext";
-import { TasksContext } from "../Contexts/TasksContext";
 import { UserContext } from "../Contexts/UserContext";
+import api from "../api/api";
 import { useAuth } from "./useAuth";
-
 
 export function useLoginAndLogout() {
 
     const userValues = useContext(UserContext);
     const error = useContext(ErrorsContext);
-    const tasks = useContext(TasksContext);
 
     const navigate = useNavigate();
-    const { handleAddToken, handleGetToken, handleAddUserName, handleClearToken } = useAuth();
+    const { handleAddToken, handleAddUserName, handleClearToken } = useAuth();
 
     async function handleSignIn() {
         if (!userValues.userName || !userValues.password) {
@@ -57,7 +54,7 @@ export function useLoginAndLogout() {
         if (!userValues.user || !userValues.userName ||
             !userValues.password || !userValues.confirmPassword) {
             error.setShowError(true);
-            error.setErrorMensage("Preencha todos os campoos");
+            error.setErrorMensage("Preencha todos os campos");
 
             setTimeout(() => {
                 error.setShowError(false);
@@ -117,24 +114,6 @@ export function useLoginAndLogout() {
     }
 
     async function handleLogout() {
-        if (!userValues.userName) {
-            try {
-                const token = handleGetToken();
-
-                const allTasks = tasks.tasksList;
-
-                for (const task of allTasks) {
-                    await api.delete(`/api/ToDo/${task.id}`, {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    });
-                }
-            } catch (error) {
-                console.log(error);
-            }
-
-        }
         handleClearToken();
         navigate("/");
     }
@@ -192,6 +171,6 @@ export function useLoginAndLogout() {
         handleSignIn,
         handleSingUp,
         handleLogout,
-        handleLoginVisitor
+        handleLoginVisitor,
     }
 }

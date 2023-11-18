@@ -8,14 +8,20 @@ import Modal from "../Modal";
 import { ContainerActions, ContainerActionsButtons, ContainerTasks, Containermain } from "./styles";
 import { useTasksActions } from "../../hooks/useTasksActions";
 import { TasksProps } from "../../types/types";
+import { UserContext } from "../../Contexts/UserContext";
 
 export function Main() {
 
     const [filterOpen, setFilterOpen] = useState<boolean>(false);
     const tasks: TasksProps = useContext(TasksContext);
-    const { handleGetTasksUser } = useTasksActions();
+    const { handleGetTasksUser, clearTasksVisitor } = useTasksActions();
+    const userValues = useContext(UserContext);
 
     useEffect(() => {
+        if (!userValues.userName) {
+            clearTasksVisitor();
+        }
+
         handleGetTasksUser();
     }, []);
 
